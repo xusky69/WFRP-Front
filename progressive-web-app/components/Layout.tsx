@@ -50,15 +50,11 @@ const Layout: FunctionComponent<LayoutProps> = ({ message, children }) => (
                         </ul>
                     </div>
                     <div className="flex-none block">
-                        {/* <ul className="menu menu-horizontal">
-                            <li><a>
-                                <div className="avatar">
-                                    <div className="w-6 mask mask-squircle">
-                                        <img src="https://api.lorem.space/image/face?hash=47449" />
-                                    </div>
-                                </div>
-                            </a></li>
-                        </ul> */}
+                        <div className="avatar">
+                            <div className="w-10 mask mask-squircle">
+                                <img src="https://api.lorem.space/image/face?hash=88560" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {children}

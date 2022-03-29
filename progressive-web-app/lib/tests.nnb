@@ -1,0 +1,100 @@
+{
+    "cells": [
+        {
+            "language": "typescript",
+            "source": [
+                "const axios = require('axios');"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "try {\n    const response = await axios.get('http://localhost:3000/api/hello/')\n    console.log(response.data)\n} catch (error) {\n    console.log(error)\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ name: 'John Doe' }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "try {\n    const response = await axios.get('http://localhost:8000/', {auth: { username: 'admin', password: '123' } })\n    console.log(response.data)\n} catch (error) {\n    console.log(error.response.data)\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  campaigns: 'http://localhost:8000/campaigns/',",
+                                "  'journal-entries': 'http://localhost:8000/journal-entries/',",
+                                "  'playable-characters': 'http://localhost:8000/playable-characters/',",
+                                "  items: 'http://localhost:8000/items/',",
+                                "  talents: 'http://localhost:8000/talents/',",
+                                "  spells: 'http://localhost:8000/spells/'",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "try {\n    const params = { username: 'admin', password: '123' }\n    const response = await axios.get('http://localhost:3000/api/login', {params})\n    console.log(response.data)\n} catch (error) {\n    console.log(error)\n    // console.log(error.response.data)\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{ ok: true }",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "false === false"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "\u001b[33mtrue\u001b[39m"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        }
+    ]
+}
