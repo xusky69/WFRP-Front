@@ -3,6 +3,7 @@ import {
     GetServerSidePropsContext,
     GetServerSidePropsResult,
     NextApiHandler,
+    NextApiRequest
 } from "next";
 
 const sessionOptions = {
@@ -28,3 +29,20 @@ export function withSessionSsr<
 ) {
     return withIronSessionSsr(handler, sessionOptions);
 }
+
+export function getUnauthRedirect(req: NextApiRequest){
+    if (req.session.user) {
+        const username = req.session.user.username
+        const password = req.session.user.password
+        return {redirect: false, username, password}
+    } else {
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/login",
+        },
+        username: '',
+        password: ''
+      }
+    }
+  }

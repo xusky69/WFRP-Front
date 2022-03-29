@@ -17,19 +17,19 @@ export default function Login() {
             let response
             try{
                 response = await axios.get('/api/login', { params: { username, password } })
-                Router.push()
             }catch(error){
                 // response = 'nope'
                 console.log(error)
-                setState({ ...state, error: `${error.message} \n please check your login credentials`})
+                setState({ ...state, error: `${error.message}. Please check your login credentials`})
             }
+            router.push('/')
         } else {
             setState({ ...state, error: 'please fill the required fields' })
         }
     }
 
     return (
-        <div className='grid place-items-center  mt-32 sm:mt-8'>
+        <div className='grid place-items-center mt-32 sm:mt-8'>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
                 <form className="card-body" onSubmit={SendCredentials}>
                     <h2 className="card-title">Login</h2>

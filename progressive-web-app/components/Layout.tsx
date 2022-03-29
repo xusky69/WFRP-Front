@@ -50,11 +50,11 @@ const Layout: FunctionComponent<LayoutProps> = ({ message, children }) => (
                         </ul>
                     </div>
                     <div className="flex-none block">
-                        <div className="avatar">
+                        <a className="avatar" href='/api/logout'>
                             <div className="w-10 mask mask-squircle">
                                 <img src="https://api.lorem.space/image/face?hash=88560" />
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 {children}
