@@ -1,0 +1,120 @@
+{
+    "cells": [
+        {
+            "language": "typescript",
+            "source": [
+                "const axios = require('axios');\nconst qs = require('qs')"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### Parameters"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const username = 'admin'\nconst password = '123'\nconst campaign = '58a53f18-22b6-4d01-84d8-95b037bfd036'\nconst apiUrl = 'http://localhost:8000/'"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### Basic auth test"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "\n\ntry {\n    const response = await axios.get(apiUrl, {auth: { username, password } })\n    console.log(response.data)\n} catch (error) {\n    console.log(error.response.data)\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  campaigns: 'http://localhost:8000/campaigns/',",
+                                "  'journal-entries': 'http://localhost:8000/journal-entries/',",
+                                "  'playable-characters': 'http://localhost:8000/playable-characters/',",
+                                "  items: 'http://localhost:8000/items/',",
+                                "  talents: 'http://localhost:8000/talents/',",
+                                "  spells: 'http://localhost:8000/spells/'",
+                                "}",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### Get campaign data"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "try{\n    response = await axios.get(`${apiUrl}playable-characters/?${queryString}`, {auth: { username, password } })\n}catch(){\n    \n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### Filter character by campaign"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "let response\ntry {\n    response = await axios.get(`${apiUrl}campaigns/?${campaign}`, {auth: { username, password } })\n} catch (error) {\n    console.log(error.response.data)\n}\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "response.data"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "[",
+                                "  {",
+                                "    master: \u001b[32m'admin'\u001b[39m,",
+                                "    name: \u001b[32m'Celephais'\u001b[39m,",
+                                "    uuid: \u001b[32m'58a53f18-22b6-4d01-84d8-95b037bfd036'\u001b[39m,",
+                                "    description: \u001b[32m'test'\u001b[39m,",
+                                "    creation_date: \u001b[32m'2022-03-29T13:37:00.605147-05:00'\u001b[39m,",
+                                "    last_updated: \u001b[32m'2022-03-29T13:37:00.605166-05:00'\u001b[39m",
+                                "  }",
+                                "]"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
+            ],
+            "outputs": []
+        }
+    ]
+}

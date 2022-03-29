@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, MouseEvent } from 'react';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 export default function Login() {
 
@@ -11,18 +11,18 @@ export default function Login() {
         event.preventDefault();
         const username = String(event.currentTarget.username.value)
         const password = String(event.currentTarget.password.value)
-        if (username.length > 0 && password.length > 0) {
+        const campaign = String(event.currentTarget.campaign.value)
+        if (username.length > 0 && password.length > 0 && campaign.length > 0) {
             console.log(username)
             console.log(password)
             let response
             try{
-                response = await axios.get('/api/login', { params: { username, password } })
+                response = await axios.get('/api/login', { params: { username, password, campaign} })
+                router.push('/')
             }catch(error){
-                // response = 'nope'
                 console.log(error)
                 setState({ ...state, error: `${error.message}. Please check your login credentials`})
             }
-            router.push('/')
         } else {
             setState({ ...state, error: 'please fill the required fields' })
         }
@@ -46,6 +46,9 @@ export default function Login() {
                     </div>
                     <div className='pt-2'>
                         <input type="text" placeholder="Password" name="password" className="input input-bordered w-full max-w-xs"></input>
+                    </div>
+                    <div className='pt-2'>
+                        <input type="text" placeholder="Campaign id" name="campaign" className="input input-bordered w-full max-w-xs"></input>
                     </div>
                     <div className="card-actions justify-center">
                         <button className="btn btn-primary">Login</button>

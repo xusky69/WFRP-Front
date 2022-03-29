@@ -34,7 +34,8 @@ export function getUnauthRedirect(req: NextApiRequest){
     if (req.session.user) {
         const username = req.session.user.username
         const password = req.session.user.password
-        return {redirect: false, username, password}
+        const campaign = req.session.user.campaign
+        return {redirect: false, username, password, campaign}
     } else {
       return {
         redirect: {
@@ -42,7 +43,8 @@ export function getUnauthRedirect(req: NextApiRequest){
           destination: "/login",
         },
         username: '',
-        password: ''
+        password: '',
+        campaign: ''
       }
     }
   }
