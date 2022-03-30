@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { withSessionRoute } from "../../lib/withSession";
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
     try {
@@ -16,8 +16,8 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
         await req.session.save();
         res.send({ ok: true });
 
-    } catch (error) {
-        res.status(403).send({ message: 'login error, please check your credentials' });
+    } catch (error : Error | AxiosError) {
+        res.status(error.response.status).send({ detail: String(error.response.data.detail) });
     }
 }
 

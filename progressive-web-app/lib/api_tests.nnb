@@ -31,7 +31,7 @@
         {
             "language": "typescript",
             "source": [
-                "\n\ntry {\n    const response = await axios.get(apiUrl, {auth: { username, password } })\n    console.log(response.data)\n} catch (error) {\n    console.log(error.response.data)\n}"
+                "try {\n    const response = await axios.get(apiUrl)\n    console.log(response.data)\n} catch (error) {\n    console.log(error.response.status)\n    console.log(error.response.data.detail)\n}\n\n// try {\n//     const response = await axios.get(apiUrl, {auth: { username, password } })\n//     console.log(response.data)\n// } catch (error) {\n//     console.log(error.response.data)\n// }"
             ],
             "outputs": [
                 {
@@ -39,14 +39,8 @@
                         {
                             "mime": "application/vnd.code.notebook.stdout",
                             "value": [
-                                "{",
-                                "  campaigns: 'http://localhost:8000/campaigns/',",
-                                "  'journal-entries': 'http://localhost:8000/journal-entries/',",
-                                "  'playable-characters': 'http://localhost:8000/playable-characters/',",
-                                "  items: 'http://localhost:8000/items/',",
-                                "  talents: 'http://localhost:8000/talents/',",
-                                "  spells: 'http://localhost:8000/spells/'",
-                                "}",
+                                "403",
+                                "Authentication credentials were not provided.",
                                 ""
                             ]
                         }

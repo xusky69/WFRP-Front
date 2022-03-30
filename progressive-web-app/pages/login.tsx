@@ -21,7 +21,7 @@ export default function Login() {
                 router.push('/')
             }catch(error){
                 console.log(error)
-                setState({ ...state, error: `${error.message}. Please check your login credentials`})
+                setState({ ...state, error: `Request failed with status ${error.response.status}. ${error.response.data.detail} Please check your login credentials`})
             }
         } else {
             setState({ ...state, error: 'please fill the required fields' })
