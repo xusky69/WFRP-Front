@@ -24,12 +24,11 @@ const SidebarIcon: FunctionComponent<IconProps> = ({ icon, text }) => {
 
 // props
 type LayoutProps = {
-    message: string,
     children?: React.ReactNode
 }
 
 // functional component
-const Layout: FunctionComponent<LayoutProps> = ({ message, children }) => (
+const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
     <div>
         <div className="drawer">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -57,7 +56,9 @@ const Layout: FunctionComponent<LayoutProps> = ({ message, children }) => (
                         </a>
                     </div>
                 </div>
-                {children}
+                <div className='bg-neutral-focus w-fit h-screen'>
+                    {children}
+                </div>
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
