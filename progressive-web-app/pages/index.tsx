@@ -5,46 +5,92 @@ import { withSessionSsr, getUnauthRedirect } from '../lib/withSession';
 import { NextApiRequest } from 'next';
 import axios from 'axios'
 import qs from 'qs'
-import { GiFeather, GiBookmarklet } from 'react-icons/gi'
+import { GiSpikedDragonHead } from 'react-icons/gi'
+import Image from 'next/image'
+import Journal, { JournalProps } from '../components/Journal'
 
 // props
-type Props = {
-  journalEntries: Array<{
+interface CampaignPanelProps {
+  campaignData: {
+    master: string
     name: string,
-    entry_text: string,
+    description: string
     creation_date: string,
-  }>,
-
+  }
+}
+interface PartySummaryProps {
+  partySummaryProps: Array<{
+    user: string,
+    name: string,
+    species: string,
+    career: string
+  }>
 }
 
+
+
+
 // functional view
-const Home: FunctionComponent<Props> = ({ journalEntries }) => {
+const Home: FunctionComponent<JournalProps & CampaignPanelProps & PartySummaryProps> = ({ journalEntries, campaignData, partyData }) => {
 
   return (
     <Layout>
-      <div tabIndex={0} className="collapse collapse-arrow">
-        <input type="checkbox" />
-        <div className="collapse-title text-xl font-medium text-neutral-content">
-          Journal Entries
+      {/* <div className='h-56 overflow-hidden'> */}
+      {/* <img
+          src="/static/img/ubersreik.jpg"
+          alt="Campaign image"
+          className='object-scale-down w-screen'
+        /> */}
+      {/* </div> */}
+      <div className="m-3 mb-0 w-fit card bg-neutral text-neutral-content shadow-xl">
+        <div className='h-72 overflow-hidden'>
+          <img
+            src="/static/img/ubersreik.jpg"
+            alt="Campaign image"
+            className='object-scale-down w-screen'
+          />
         </div>
-        <div className='collapse-content'>
-          {journalEntries.map(item => (
-            <div className="mb-3 mx-0 w-fit card bg-neutral text-neutral-content shadow-xl">
-              <div className="card-body p-5">
-                <h2 className="card-title">
-                  <GiFeather size="28" />{item.name}
-                </h2>
-                <div className='text-sm italic'>
-                  {item.creation_date.slice(0, 10).replaceAll('-', '/')}
-                </div>
-                <p className='italic'>
-                  {item.entry_text}
-                </p>
-              </div>
-            </div>
-          ))}
+        <div className="card-body p-5">
+          <h2 className="card-title">
+            <GiSpikedDragonHead size="24" /> {campaignData.name}
+          </h2>
+          <div className='text-sm flex flex-row'>
+            Dungeon master:&nbsp;<b>{campaignData.master}</b>
+          </div>
+          <p className='italic'>
+            {campaignData.description}
+          </p>
         </div>
       </div>
+
+      <div className="m-3 mb-0 w-fit card bg-neutral text-neutral-content shadow-xl">
+        <div className="card-body p-5">
+          <h2 className="card-title">
+            <GiSpikedDragonHead size="24" /> {campaignData.name}
+          </h2>
+          <div className="">
+            <table className="table table-compact w-10/12">
+              <tbody>
+                {partyData.map((item) => (
+                  <tr>
+                    <th>{item.name}</th>
+                    <td>{item.species}</td>
+                    <td>{item.career}</td>
+                    <td>Blue</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="avatar">
+            <div className="w-12 mask mask-squircle">
+              <img src="https://api.lorem.space/image/face?hash=47449" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Journal journalEntries={journalEntries} />
     </Layout>
   )
 }
@@ -61,20 +107,41 @@ const getServerSidePropsBase = async function ({ req }) {
   const { redirect, username, password, campaign } = getUnauthRedirect(req)
   if (redirect !== false) { return { redirect } }
 
-  const queryString = qs.stringify({
+  const campaignQueryString = qs.stringify({
     campaign__uuid: campaign,
   })
 
-  const response = await axios.get(`${apiUrl}journal-entries/?${queryString}`, { auth: { username, password } })
-  const journalEntries = response.data.map((item: object) => ({
+  const journalResponse = await axios.get(`${apiUrl}journal-entries/?${campaignQueryString}`, { auth: { username, password } })
+  const journalEntries = journalResponse.data.map((item: { name: string, entry_text: string, creation_date: string }) => ({
     name: item.name,
     entry_text: item.entry_text,
     creation_date: item.creation_date
   }))
 
+  const campaignResponse = await axios.get(`${apiUrl}campaigns/?${campaign}`, { auth: { username, password } })
+  const campaignData = {
+    master: campaignResponse.data[0].master,
+    name: campaignResponse.data[0].name,
+    description: campaignResponse.data[0].description
+  }
+
+  const partyQueryString = qs.stringify({
+    campaign__uuid: campaign,
+  })
+
+  const partyResponse = await axios.get(`${apiUrl}playable-characters/?${partyQueryString}`, { auth: { username, password } })
+  const partyData = partyResponse.data.map((item: { user: string, name: string, species: string, career: string }) => ({
+    user: item.user,
+    name: item.name,
+    species: item.species,
+    career: item.career
+  }))
+
   return {
     props: {
-      journalEntries: journalEntries
+      journalEntries,
+      campaignData,
+      partyData
     }
   }
 

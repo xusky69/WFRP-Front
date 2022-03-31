@@ -69,6 +69,55 @@
             "outputs": []
         },
         {
+            "language": "typescript",
+            "source": [
+                "response.data"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "[",
+                                "  {",
+                                "    master: \u001b[32m'admin'\u001b[39m,",
+                                "    name: \u001b[32m'Celephais'\u001b[39m,",
+                                "    uuid: \u001b[32m'58a53f18-22b6-4d01-84d8-95b037bfd036'\u001b[39m,",
+                                "    description: \u001b[32m'test'\u001b[39m,",
+                                "    creation_date: \u001b[32m'2022-03-29T13:37:00.605147-05:00'\u001b[39m,",
+                                "    last_updated: \u001b[32m'2022-03-29T13:37:00.605166-05:00'\u001b[39m",
+                                "  }",
+                                "]"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "const campaignData = {\n    master: response.data[0].master,\n    name: response.data[0].name,\n    description: response.data[0].description\n  }\n\ncampaignData"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "{",
+                                "  master: \u001b[32m'admin'\u001b[39m,",
+                                "  name: \u001b[32m'Celephais'\u001b[39m,",
+                                "  description: \u001b[32m'test'\u001b[39m",
+                                "}"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "language": "markdown",
             "source": [
                 "### Filter character by campaign"
@@ -78,9 +127,111 @@
         {
             "language": "typescript",
             "source": [
-                "\nconst queryString = qs.stringify({\n    campaign__uuid: campaign,\n    user__username: username,\n})\n\ntry{\n    response = await axios.get(`${apiUrl}playable-characters/?${queryString}`, {auth: { username, password } })\n}catch(error){\n    console.log(error.response.status)\n    console.log(error.response.data.detail)\n}"
+                "\nconst queryString = qs.stringify({\n    campaign__uuid: campaign,\n    // user__username: username,\n})\n\ntry{\n    response = await axios.get(`${apiUrl}playable-characters/?${queryString}`, {auth: { username, password } })\n}catch(error){\n    console.log(error.response.status)\n    console.log(error.response.data.detail)\n}"
             ],
             "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "response.data[0]"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "{",
+                                "  user: \u001b[32m'admin'\u001b[39m,",
+                                "  campaign: \u001b[32m'58a53f18-22b6-4d01-84d8-95b037bfd036'\u001b[39m,",
+                                "  uuid: \u001b[32m'8533edd5-63c9-4613-bacb-a0fcf24cd7e2'\u001b[39m,",
+                                "  creation_date: \u001b[32m'2022-03-29T13:37:30.243917-05:00'\u001b[39m,",
+                                "  last_updated: \u001b[32m'2022-03-29T13:37:30.243933-05:00'\u001b[39m,",
+                                "  name: \u001b[32m'Gunnar'\u001b[39m,",
+                                "  species: \u001b[32m'Dwarf'\u001b[39m,",
+                                "  career: \u001b[32m'Slayer'\u001b[39m,",
+                                "  career_level: \u001b[32m''\u001b[39m,",
+                                "  career_path: \u001b[32m''\u001b[39m,",
+                                "  status: \u001b[32m''\u001b[39m,",
+                                "  age: \u001b[32m''\u001b[39m,",
+                                "  height: \u001b[32m''\u001b[39m,",
+                                "  hair: \u001b[32m''\u001b[39m,",
+                                "  eyes: \u001b[32m''\u001b[39m,",
+                                "  skin_color: \u001b[32m''\u001b[39m,",
+                                "  mother: \u001b[32m''\u001b[39m,",
+                                "  father: \u001b[32m''\u001b[39m,",
+                                "  siblings: \u001b[32m''\u001b[39m,",
+                                "  couple: \u001b[32m''\u001b[39m,",
+                                "  birthplace: \u001b[32m''\u001b[39m,",
+                                "  background_story: \u001b[32m''\u001b[39m,",
+                                "  personal_relations: \u001b[32m''\u001b[39m,",
+                                "  secrets: \u001b[32m''\u001b[39m,",
+                                "  notes: \u001b[32m''\u001b[39m,",
+                                "  weapon_skill: \u001b[33m0\u001b[39m,",
+                                "  ballistic_skill: \u001b[33m0\u001b[39m,",
+                                "  strength: \u001b[33m0\u001b[39m,",
+                                "  toughness: \u001b[33m0\u001b[39m,",
+                                "  initiative: \u001b[33m0\u001b[39m,",
+                                "  agility: \u001b[33m0\u001b[39m,",
+                                "  dexterity: \u001b[33m0\u001b[39m,",
+                                "  intelligence: \u001b[33m0\u001b[39m,",
+                                "  willpower: \u001b[33m0\u001b[39m,",
+                                "  fellowship: \u001b[33m0\u001b[39m,",
+                                "  fate: \u001b[33m0\u001b[39m,",
+                                "  fortune: \u001b[33m0\u001b[39m,",
+                                "  resilience: \u001b[33m0\u001b[39m,",
+                                "  resolve: \u001b[33m0\u001b[39m,",
+                                "  motivation: \u001b[33m0\u001b[39m,",
+                                "  current: \u001b[33m0\u001b[39m,",
+                                "  spent: \u001b[33m0\u001b[39m,",
+                                "  movement: \u001b[33m0\u001b[39m,",
+                                "  walk: \u001b[33m0\u001b[39m,",
+                                "  run: \u001b[33m0\u001b[39m,",
+                                "  art: \u001b[33m0\u001b[39m,",
+                                "  athletics: \u001b[33m0\u001b[39m,",
+                                "  bribery: \u001b[33m0\u001b[39m,",
+                                "  charm: \u001b[33m0\u001b[39m,",
+                                "  charm_animal: \u001b[33m0\u001b[39m,",
+                                "  climb: \u001b[33m0\u001b[39m,",
+                                "  cool: \u001b[33m0\u001b[39m,",
+                                "  consume_alcohol: \u001b[33m0\u001b[39m,",
+                                "  dodge: \u001b[33m0\u001b[39m,",
+                                "  drive: \u001b[33m0\u001b[39m,",
+                                "  endurance: \u001b[33m0\u001b[39m,",
+                                "  entertain: \u001b[33m0\u001b[39m,",
+                                "  gamble: \u001b[33m0\u001b[39m,",
+                                "  gossip: \u001b[33m0\u001b[39m,",
+                                "  haggle: \u001b[33m0\u001b[39m,",
+                                "  intimidate: \u001b[33m0\u001b[39m,",
+                                "  intuition: \u001b[33m0\u001b[39m,",
+                                "  leadership: \u001b[33m0\u001b[39m,",
+                                "  melee_basic: \u001b[33m0\u001b[39m,",
+                                "  navigation: \u001b[33m0\u001b[39m,",
+                                "  outdoor_survival: \u001b[33m0\u001b[39m,",
+                                "  perception: \u001b[33m0\u001b[39m,",
+                                "  ride: \u001b[33m0\u001b[39m,",
+                                "  row: \u001b[33m0\u001b[39m,",
+                                "  stealth: \u001b[33m0\u001b[39m,",
+                                "  short_term_ambitions: \u001b[32m''\u001b[39m,",
+                                "  long_term_ambitions: \u001b[32m''\u001b[39m,",
+                                "  psychology: \u001b[32m''\u001b[39m,",
+                                "  corruption: \u001b[33m0\u001b[39m,",
+                                "  mutations: \u001b[32m''\u001b[39m,",
+                                "  wealth: \u001b[33m0\u001b[39m,",
+                                "  wounds: \u001b[33m0\u001b[39m,",
+                                "  right_arm: \u001b[33m0\u001b[39m,",
+                                "  left_arm: \u001b[33m0\u001b[39m,",
+                                "  head: \u001b[33m0\u001b[39m,",
+                                "  right_leg: \u001b[33m0\u001b[39m,",
+                                "  left_leg: \u001b[33m0\u001b[39m,",
+                                "  body: \u001b[33m0\u001b[39m",
+                                "}"
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "language": "markdown",
@@ -92,38 +243,16 @@
         {
             "language": "typescript",
             "source": [
-                "const queryString = qs.stringify({\n    campaign__uuid: campaign,\n})\n\ntry{\n    response = await axios.get(`${apiUrl}journal-entries/?${queryString}`, {auth: { username, password } })\n}catch(error){\n    console.log(error.response.status)\n    console.log(error.response.data.detail)\n}"
+                "const queryString = qs.stringify({\n    campaign__uuid: campaign,\n})\n\nlet journalEntries\n\ntry{\n    response = await axios.get(`${apiUrl}journal-entries/?${queryString}`, {auth: { username, password } })\n    journalEntries = response.data.map((item: object) => ({name: item.name, entry_text: item.entry_text, creation_date: item.creation_date}))\n}catch(error){\n    console.log(error.response.status)\n    console.log(error.response.data.detail)\n}"
             ],
             "outputs": []
         },
         {
-            "language": "typescript",
+            "language": "markdown",
             "source": [
-                "const journalEntries = response.data.map((item: object) => ({name: item.name, entry_text: item.entry_text, creation_date: item.creation_date}))"
+                "### "
             ],
             "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "journalEntries[0]"
-            ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "text/plain",
-                            "value": [
-                                "{",
-                                "  name: \u001b[32m'Et harum quidem rerum'\u001b[39m,",
-                                "  entry_text: \u001b[32m'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga'\u001b[39m,",
-                                "  creation_date: \u001b[32m'2022-03-30T15:29:56.523680-05:00'\u001b[39m",
-                                "}"
-                            ]
-                        }
-                    ]
-                }
-            ]
         },
         {
             "language": "typescript",

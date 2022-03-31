@@ -29,7 +29,7 @@ type LayoutProps = {
 
 // functional component
 const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
-    <div>
+    <div data-theme="dark">
         <div className="drawer">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
@@ -51,7 +51,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
                     <div className="flex-none block">
                         <a className="avatar" href='/api/logout'>
                             <div className="w-10 mask mask-squircle">
-                                <img src="https://api.lorem.space/image/face?hash=88560" />
+                                <img src="https://api.lorem.space/image/face?hash=88560" className='mask mask-squircle'/>
                             </div>
                         </a>
                     </div>
