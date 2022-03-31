@@ -5,7 +5,7 @@ import { withSessionSsr, getUnauthRedirect } from '../lib/withSession';
 import { NextApiRequest } from 'next';
 import axios from 'axios'
 import qs from 'qs'
-import { GiSpikedDragonHead } from 'react-icons/gi'
+import { GiSpikedDragonHead, GiAxeSword } from 'react-icons/gi'
 import Image from 'next/image'
 import Journal, { JournalProps } from '../components/Journal'
 
@@ -19,16 +19,13 @@ interface CampaignPanelProps {
   }
 }
 interface PartySummaryProps {
-  partySummaryProps: Array<{
+  partyData: Array<{
     user: string,
     name: string,
     species: string,
     career: string
   }>
 }
-
-
-
 
 // functional view
 const Home: FunctionComponent<JournalProps & CampaignPanelProps & PartySummaryProps> = ({ journalEntries, campaignData, partyData }) => {
@@ -63,29 +60,30 @@ const Home: FunctionComponent<JournalProps & CampaignPanelProps & PartySummaryPr
         </div>
       </div>
 
-      <div className="m-3 mb-0 w-fit card bg-neutral text-neutral-content shadow-xl">
+      <div className="m-3 mb-0  w-12/12 card bg-neutral text-neutral-content shadow-xl">
         <div className="card-body p-5">
           <h2 className="card-title">
-            <GiSpikedDragonHead size="24" /> {campaignData.name}
+            <GiAxeSword size="24" /> Party summary
           </h2>
-          <div className="">
-            <table className="table table-compact w-10/12">
+          <div>
+            <table className="table table-compact w-full">
               <tbody>
                 {partyData.map((item) => (
                   <tr>
+                    <td className='flex'>          
+                      <div className="pl-4 avatar">
+                        <div className="w-8 mask mask-squircle">
+                          <img src="https://api.lorem.space/image/face?hash=47449" />
+                        </div>
+                      </div>
+                    </td>
                     <th>{item.name}</th>
                     <td>{item.species}</td>
                     <td>{item.career}</td>
-                    <td>Blue</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          </div>
-          <div className="avatar">
-            <div className="w-12 mask mask-squircle">
-              <img src="https://api.lorem.space/image/face?hash=47449" />
-            </div>
           </div>
         </div>
       </div>
