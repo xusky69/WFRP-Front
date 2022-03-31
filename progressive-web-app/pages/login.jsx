@@ -7,7 +7,7 @@ export default function Login() {
     const [state, setState] = useState({ error: '' })
     const router = useRouter()
 
-    async function SendCredentials(event: MouseEvent) {
+    async function SendCredentials(event) {
         event.preventDefault();
         const username = String(event.currentTarget.username.value)
         const password = String(event.currentTarget.password.value)

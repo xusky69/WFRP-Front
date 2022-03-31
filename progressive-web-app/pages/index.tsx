@@ -1,12 +1,12 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { FunctionComponent } from 'react'
-// import { GetServerSideProps } from 'next'
 import Layout from '../components/Layout'
-import { withSessionSsr, getUnauthRedirect } from '../lib/withSession';
-import { NextApiRequest } from 'next';
+import { withSessionSsr, getUnauthRedirect} from '../lib/withSession';
 import axios from 'axios'
 import qs from 'qs'
 import { GiSpikedDragonHead, GiAxeSword } from 'react-icons/gi'
-import Image from 'next/image'
 import Journal, { JournalProps } from '../components/Journal'
 
 // props
@@ -94,7 +94,7 @@ const Home: FunctionComponent<JournalProps & CampaignPanelProps & PartySummaryPr
 }
 
 // props func
-const getServerSidePropsBase = async function ({ req }) {
+async function getServerSidePropsBase({req}){
 
   // filters now working on the api side!
   // example

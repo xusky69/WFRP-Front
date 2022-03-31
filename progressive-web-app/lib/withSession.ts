@@ -1,4 +1,5 @@
-import { withIronSessionApiRoute, withIronSessionSsr } from "iron-session/next";
+import { withIronSessionApiRoute, withIronSessionSsr} from "iron-session/next";
+import { ironSession } from "iron-session/express";
 import {
     GetServerSidePropsContext,
     GetServerSidePropsResult,
@@ -30,7 +31,9 @@ export function withSessionSsr<
     return withIronSessionSsr(handler, sessionOptions);
 }
 
-export function getUnauthRedirect(req: NextApiRequest){
+type NextIronRequest = NextApiRequest & { session: {user: {username:string, password:string, campaign:string}} };
+
+export function getUnauthRedirect(req: NextIronRequest){
     if (req.session.user) {
         const username = req.session.user.username
         const password = req.session.user.password
