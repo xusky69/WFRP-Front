@@ -14,6 +14,7 @@ interface CampaignPanelProps {
   campaignData: {
     master: string
     name: string,
+    cover_image: string,
     description: string
     creation_date: string,
   }
@@ -34,6 +35,7 @@ const Home: FunctionComponent<JournalProps & CampaignPanelProps & PartySummaryPr
   return (
     <Layout userPicture={userData.userAvatar}>
       <div className='bg-neutral-focus'>
+
         <div className="m-3 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
           <div className='h-72 overflow-hidden'>
             <img
@@ -82,6 +84,7 @@ const Home: FunctionComponent<JournalProps & CampaignPanelProps & PartySummaryPr
             </div>
           </div>
         </div>
+
         <Journal journalEntries={journalEntries} />
       </div>
     </Layout>
@@ -145,9 +148,9 @@ async function getServerSidePropsBase({ req }) {
   }))
 
   let userAvatar
-  try{
+  try {
     userAvatar = partyData.filter((item) => (item.user == username))[0].avatar
-  } catch(error){
+  } catch (error) {
     userAvatar = "undefined"
   }
 
@@ -160,7 +163,7 @@ async function getServerSidePropsBase({ req }) {
     props: {
       journalEntries,
       campaignData,
-      partyData, 
+      partyData,
       userData
     }
   }
