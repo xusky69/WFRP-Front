@@ -1,0 +1,1 @@
+export const processDate = (date)=> (date.slice(0, 16).replaceAll('-', '/').replaceAll('T', ' '))

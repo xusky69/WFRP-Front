@@ -1,11 +1,19 @@
 import axios from 'axios'
-import { useState, MouseEvent } from 'react';
+import { useState, MouseEvent, useDebugValue } from 'react';
 import { useRouter } from 'next/router';
 
 export default function Login() {
 
     const [state, setState] = useState({ error: '' })
     const router = useRouter()
+
+    // interface loginEvent {
+    //     currentTarget: {
+    //         username: { value: string },
+    //         password: { value: string },
+    //         campaign: { value: string }
+    //     }
+    // }
 
     async function SendCredentials(event) {
         event.preventDefault();
@@ -16,12 +24,12 @@ export default function Login() {
             console.log(username)
             console.log(password)
             let response
-            try{
-                response = await axios.get('/api/login', { params: { username, password, campaign} })
+            try {
+                response = await axios.get('/api/login', { params: { username, password, campaign } })
                 router.push('/')
-            }catch(error){
+            } catch (error) {
                 console.log(error)
-                setState({ ...state, error: `Request failed with status ${error.response.status}. ${error.response.data.detail} Please check your login credentials`})
+                setState({ ...state, error: `Request failed with status ${error.response.status}. ${error.response.data.detail} Please check your login credentials` })
             }
         } else {
             setState({ ...state, error: 'please fill the required fields' })

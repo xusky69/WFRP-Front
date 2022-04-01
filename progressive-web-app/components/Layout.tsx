@@ -25,10 +25,11 @@ const SidebarIcon: FunctionComponent<IconProps> = ({ icon, text }) => {
 // props
 type LayoutProps = {
     children?: React.ReactNode
+    userPicture?: string,
 }
 
 // functional component
-const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
+const Layout: FunctionComponent<LayoutProps> = ({ userPicture, children }) => (
     <div data-theme="dark">
         <div className="drawer">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -51,12 +52,12 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
                     <div className="flex-none block">
                         <a className="avatar" href='/api/logout'>
                             <div className="w-10 mask mask-squircle">
-                                <img src="https://api.lorem.space/image/face?hash=88560" className='mask mask-squircle'/>
+                             <img src={userPicture || '/static/img/user_placeholder.png'} alt='user avatar' className='mask mask-squircle'/>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div className='bg-neutral-focus w-fit h-screen'>
+                <div className='bg-neutral-focus'>
                     {children}
                 </div>
             </div>

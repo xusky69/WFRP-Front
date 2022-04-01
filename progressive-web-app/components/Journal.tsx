@@ -11,7 +11,7 @@ export interface JournalProps {
     }>
 }
 
-//functional components
+// functional components
 const JournalEntries: FunctionComponent<JournalProps> = ({ journalEntries }) => (
     <div tabIndex={0} className="collapse collapse-arrow bg-neutral-focus text-neutral-content ">
         <input type="checkbox" />
@@ -19,8 +19,8 @@ const JournalEntries: FunctionComponent<JournalProps> = ({ journalEntries }) => 
             Journal Entries
         </div>
         <div className='collapse-content'>
-            {journalEntries.map(item => (
-                <div className="mb-3 mx-0 w-fit card shadow-xl bg-neutral text-neutral-content">
+            {journalEntries.map((item, i) => (
+                <div key={i} className="mb-3 mx-0 w-fit card shadow-xl bg-neutral text-neutral-content">
                     <div className="card-body p-5">
                         <h2 className="card-title">
                             <GiFeather size="28" />{item.name}
