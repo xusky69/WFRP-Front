@@ -1,5 +1,12 @@
 import { FunctionComponent, ReactElement } from 'react'
-import { GiBroadsword, GiSpellBook, GiCrossbow, GiWarhammer, GiDwarfHelmet, GiWizardStaff, GiBookmarklet, GiBeerStein } from 'react-icons/gi'
+import {
+    GiBroadsword,
+    GiWarhammer,
+    GiDwarfHelmet,
+    GiBookmarklet,
+    GiBeerStein,
+} from 'react-icons/gi'
+import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { BiLogOut } from 'react-icons/bi'
 import Link from 'next/link'
 
@@ -38,11 +45,14 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
                 <div className="w-full navbar bg-neutral text-neutral-content shadow-md">
                     <div className="flex-none lg:hidden">
                         <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16">
+                                </path>
+                            </svg>
                         </label>
                     </div>
                     <div className="flex-1">
-                        <a className="btn btn-ghost normal-case text-xl"><GiWarhammer size={36} /> &nbsp; Warhammer RP</a>
+                        <a className="btn btn-ghost normal-case text-xl"><GiWarhammer size={36} /> &nbsp; Warhammer RPG</a>
                     </div>
                     <div className="flex-none hidden lg:block">
                         <ul className="menu menu-horizontal">
@@ -50,11 +60,12 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
                             <li><a>Navbar Item 2</a></li>
                         </ul>
                     </div>
-                    <div className="flex-none block">
+                    <div className="flex pr-2">
                         <a className="avatar" href='/api/logout'>
-                            <div className="w-10 mask mask-squircle bg-base-300">
+                            <RiLogoutBoxRLine size={28} />
+                            {/* <div className="w-10 mask mask-squircle bg-base-300">
                                 <img src={'/static/img/user_placeholder.png'} alt='user avatar' className='mask mask-squircle' />
-                            </div>
+                            </div> */}
                         </a>
                     </div>
                 </div>
@@ -73,7 +84,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
                         </Link>
                     </li>
                     <li>
-                        <Link href="/min-example">
+                        <Link href="/party">
                             <a className='pb-0 active:bg-neutral hover:bg-neutral'>
                                 <SidebarIcon text='Party' icon={<GiBeerStein size="36" />} />
                             </a>

@@ -32,24 +32,24 @@ async function getServerSidePropsBase({ req }) {
     getPartyData({ campaign, username, password, apiUrl })
   ])
 
-  let userAvatar
-  try {
-    userAvatar = partyData.filter((item) => (item.user == username))[0].avatar
-  } catch (error) {
-    userAvatar = null
-  }
+  // let userAvatar
+  // try {
+  //   userAvatar = partyData.filter((item) => (item.user == username))[0].avatar
+  // } catch (error) {
+  //   userAvatar = null
+  // }
 
-  const userData = {
-    username: username,
-    userAvatar: userAvatar
-  }
+  // const userData = {
+  //   username: username,
+  //   userAvatar: userAvatar
+  // }
 
   return {
     props: {
       journalEntries,
       campaignData,
       partyData,
-      userData
+      // userData
     }
   }
 }

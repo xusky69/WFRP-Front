@@ -1,0 +1,5 @@
+### WFRP front image building:
+# sudo docker build -t wfrpfront .
+
+### delete docker dangling images
+# docker rmi -f $(docker images -f "dangling=true" -q)
