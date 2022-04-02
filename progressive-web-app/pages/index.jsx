@@ -9,13 +9,13 @@ import { getCampaignData, getJournalData, getPartyData } from '../lib/common';
 const Home = ({ journalEntries, campaignData, partyData, userData }) => {
 
   return (
-    <Layout userPicture={userData.userAvatar}>
+    // <Layout userPicture={userData.userAvatar}>
       <div className='bg-neutral-focus'>
       <Campaign campaignData={campaignData} />
       <PartySummary partyData={partyData} />
       <Journal journalEntries={journalEntries} />
       </div>
-    </Layout>
+    // </Layout>
   )
 }
 
