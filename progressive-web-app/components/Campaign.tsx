@@ -13,7 +13,7 @@ interface CampaignProps {
 const Campaign: FunctionComponent<CampaignProps> = ({ campaignData }) => {
     return (
         <div className="m-3 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
-            <div className='h-72 overflow-hidden'>
+            <div className='max-h-64 overflow-hidden'>
                 <img
                     src={campaignData.cover_image}
                     alt='campaign cover image'
@@ -27,7 +27,7 @@ const Campaign: FunctionComponent<CampaignProps> = ({ campaignData }) => {
                 <div className='text-sm flex flex-row'>
                     Dungeon master:&nbsp;<b>{campaignData.master}</b>
                 </div>
-                <p className='italic'>
+                <p className='italic text-sm' style={{whiteSpace: "pre-wrap"}}>
                     {campaignData.description}
                 </p>
             </div>

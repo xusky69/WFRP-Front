@@ -14,30 +14,29 @@ interface PartySummaryProps {
 const PartySummary: FunctionComponent<PartySummaryProps> = ({ partyData }) => {
     return (
         <div className="m-3 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
-            <div className="card-body p-5">
+            <div className="card-body p-5 overflow-x-hidden">
                 <h2 className="card-title">
-                    <GiAxeSword size="24" /> Party summary
+                    <GiAxeSword size="24" /> Party Summary
                 </h2>
-                <div>
-                    <table className="table table-compact w-full">
-                        <tbody>
-                            {partyData.map((item) => (
-                                <tr>
-                                    <td className='flex'>
-                                        <div className="pl-4 avatar">
-                                            <div className="w-8 mask mask-squircle">
-                                                <img src={item.avatar || '/static/img/user_placeholder.png'} />
-                                            </div>
+                
+                <table className="table table-compact w-12/12">
+                    <tbody>
+                        {partyData.map((item, i) => (
+                            <tr key={"journal_" + String(i)}>
+                                <td className='flex'>
+                                    <div className="pl-1 avatar">
+                                        <div className="w-8 mask mask-squircle bg-base-200">
+                                            <img className="" src={item.avatar || '/static/img/user_placeholder.png'} />
                                         </div>
-                                    </td>
-                                    <th>{item.name}</th>
-                                    <td>{item.species}</td>
-                                    <td>{item.career}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                                    </div>
+                                </td>
+                                <th className="text-xs">{item.name}</th>
+                                <td className="text-xs">{item.species}</td>
+                                <td className="text-xs">{item.career}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </div>
 

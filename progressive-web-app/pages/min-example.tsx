@@ -1,7 +1,8 @@
 // import styles from '../styles/View.module.css'
 import Snippet from '../components/Snippet'
-import { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react'
 import { GetServerSideProps } from 'next'
+import Layout from '../components/Layout'
 
 // props
 type ViewProps = {
@@ -10,11 +11,13 @@ type ViewProps = {
 
 // functional component
 const View: FunctionComponent<ViewProps> = ({ message }) => (
-  <div>
-    <Snippet message={message}>
-      <p>Children</p>
-    </Snippet>
-  </div>
+  <Layout>
+    <div>
+      <Snippet message={message}>
+        <p>Children</p>
+      </Snippet>
+    </div>
+  </Layout>
 )
 
 // prop func

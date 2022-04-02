@@ -1,6 +1,7 @@
 import { FunctionComponent, ReactElement } from 'react'
 import { GiBroadsword, GiSpellBook, GiCrossbow, GiWarhammer, GiDwarfHelmet, GiWizardStaff, GiBookmarklet, GiBeerStein } from 'react-icons/gi'
 import { BiLogOut } from 'react-icons/bi'
+import Link from 'next/link'
 
 type IconProps = {
     icon: ReactElement,
@@ -51,8 +52,8 @@ const Layout: FunctionComponent<LayoutProps> = ({ userPicture, children }) => (
                     </div>
                     <div className="flex-none block">
                         <a className="avatar" href='/api/logout'>
-                            <div className="w-10 mask mask-squircle">
-                             <img src={userPicture || '/static/img/user_placeholder.png'} alt='user avatar' className='mask mask-squircle'/>
+                            <div className="w-10 mask mask-squircle bg-base-300">
+                                <img src={userPicture || '/static/img/user_placeholder.png'} alt='user avatar' className='mask mask-squircle' />
                             </div>
                         </a>
                     </div>
@@ -64,10 +65,30 @@ const Layout: FunctionComponent<LayoutProps> = ({ userPicture, children }) => (
             <div className="drawer-side">
                 <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
                 <ul className="menu w-24 overflow-y-visible overflow-x-visible bg-neutral text-neutral-content">
-                    <li><a className='pb-0 active:bg-neutral hover:bg-neutral'><SidebarIcon text='Campaign' icon={<GiBookmarklet size="36" />} /></a></li>
-                    <li><a className='pb-0 active:bg-neutral hover:bg-neutral'><SidebarIcon text='Party' icon={<GiBeerStein size="36" />} /></a></li>
-                    <li><a className='pb-0 active:bg-neutral hover:bg-neutral'><SidebarIcon text='Character' icon={<GiDwarfHelmet size="36" />} /></a></li>
-                    <li><a className='pb-0 active:bg-neutral hover:bg-neutral'><SidebarIcon text='Combat' icon={<GiBroadsword size="36" />} /></a></li>
+                    <li>
+                        <Link href="/">
+                            <a className='pb-0 active:bg-neutral hover:bg-neutral'>
+                                <SidebarIcon text='Campaign' icon={<GiBookmarklet size="36" />} />
+                            </a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/min-example">
+                            <a className='pb-0 active:bg-neutral hover:bg-neutral'>
+                                <SidebarIcon text='Party' icon={<GiBeerStein size="36" />} />
+                            </a>
+                        </Link>
+                    </li>
+                    <li>
+                        <a className='pb-0 active:bg-neutral hover:bg-neutral'>
+                            <SidebarIcon text='Character' icon={<GiDwarfHelmet size="36" />} />
+                        </a>
+                    </li>
+                    <li>
+                        <a className='pb-0 active:bg-neutral hover:bg-neutral'>
+                            <SidebarIcon text='Combat' icon={<GiBroadsword size="36" />} />
+                        </a>
+                    </li>
                     {/* <li><a className='pb-0 active:bg-neutral hover:bg-neutral'><SidebarIcon text='Combat' icon={<GiBroadsword size="36" />} /></a></li> */}
                     {/* <li><a className='pb-0 active:bg-neutral hover:bg-neutral'><SidebarIcon text='Weapons' icon={<GiCrossbow size="36" />} /></a></li> */}
                     {/* <li><a className='pb-0 active:bg-neutral hover:bg-neutral'><SidebarIcon text='Spells' icon={<GiSpellBook size="36" />} /></a></li> */}

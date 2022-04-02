@@ -19,12 +19,12 @@ const JournalEntries: FunctionComponent<JournalProps> = ({ journalEntries }) => 
                 <input type="checkbox" />
                 <div className="collapse-title">
                     <h2 className="card-title">
-                        <GiBookmarklet size="24" /> Party summary
+                        <GiBookmarklet size="24" /> Party Journal
                     </h2>
                 </div>
                 <div className='collapse-content'>
                     {journalEntries.map((item, i) => (
-                        <div key={i} className="mb-3 mx-0 w-12/12 card shadow-xl bg-base-100 text-neutral-content">
+                        <div key={"party_" + String(i)} className="mb-3 mx-0 w-12/12 card shadow-xl bg-base-100 text-neutral-content">
                             <div className="card-body p-5">
                                 <h2 className="card-title">
                                     <GiFeather size="28" />{item.name}
