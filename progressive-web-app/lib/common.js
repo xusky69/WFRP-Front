@@ -45,11 +45,5 @@ export async function getPartyData({ campaign, username, password, apiUrl }) {
         campaign: campaign,
     })
     const response = await axios.get(`${apiUrl}playable-characters/?${partyQueryString}`, { auth: { username, password } })
-    return response.data.map((item) => ({
-        user: item.user,
-        avatar: item.character_avatar,
-        name: item.name,
-        species: item.species,
-        career: item.career
-    }))
+    return response.data.map((item) => (item))
 }

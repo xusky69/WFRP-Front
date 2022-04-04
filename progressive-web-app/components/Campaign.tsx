@@ -27,7 +27,7 @@ const Campaign: FunctionComponent<CampaignProps> = ({ campaignData }) => {
                 <div className='text-sm flex flex-row'>
                     Dungeon master:&nbsp;<b>{campaignData.master}</b>
                 </div>
-                <p className='italic text-sm' style={{whiteSpace: "pre-wrap"}}>
+                <p className='italic text-sm whitespace-pre-wrap'>
                     {campaignData.description}
                 </p>
             </div>

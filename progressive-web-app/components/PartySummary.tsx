@@ -4,7 +4,7 @@ import { GiAxeSword } from 'react-icons/gi'
 interface PartySummaryProps {
     partyData: Array<{
         user: string,
-        avatar: string,
+        character_avatar: string,
         name: string,
         species: string,
         career: string
@@ -26,7 +26,7 @@ const PartySummary: FunctionComponent<PartySummaryProps> = ({ partyData }) => {
                                 <td className='flex'>
                                     <div className="pl-1 avatar">
                                         <div className="w-8 mask mask-squircle bg-base-200">
-                                            <img className="" src={item.avatar || '/static/img/user_placeholder.png'} />
+                                            <img className="" src={item.character_avatar || '/static/img/user_placeholder.png'} />
                                         </div>
                                     </div>
                                 </td>
