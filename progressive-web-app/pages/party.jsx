@@ -11,38 +11,28 @@ import {
 import { CollapsableContent } from '../components/Common';
 import {
   BasicInfo,
-  ProvidenceTable,
+  BasicData,
   ArmorTable,
   CharacteristicsTable,
   SkillTable
 } from '../components/Character'
 
-
-
-const PartyItem = ({ partyCharacter }) => (
+const PartyItem = ({ character }) => (
   <div className='bg-neutral-focus'>
     <div className="m-2 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
       <div className="card-body p-2">
-        <BasicInfo character={partyCharacter} />
-        <CollapsableContent title={<div className='flex'><GiScrollQuill size={28} /> &nbsp; Background </div>}>
-          <p className='text-sm italic whitespace-pre-wrap'>
-            {partyCharacter.background_story}
-          </p>
+        <BasicInfo character={character} />
+        <CollapsableContent title={<div className='flex'><GiScrollQuill size={28} /> &nbsp; Basic Data </div>}>
+          <BasicData character={character} />
         </CollapsableContent>
         <CollapsableContent title={<div className='flex'><GiBreastplate size={28} /> &nbsp; Armor </div>}>
-          <p className='text-sm whitespace-pre-wrap'>
-            {<ArmorTable character={partyCharacter} />}
-          </p>
+          <ArmorTable character={character} />
         </CollapsableContent>
         <CollapsableContent title={<div className='flex'><GiAbacus size={28} /> &nbsp; Characteristics </div>}>
-          <p className='text-sm whitespace-pre-wrap'>
-            {<CharacteristicsTable character={partyCharacter} />}
-          </p>
+          <CharacteristicsTable character={character} />
         </CollapsableContent>
         <CollapsableContent title={<div className='flex'><GiSwordsEmblem size={26} /> &nbsp; Basic Skills </div>}>
-          <p className='text-sm whitespace-pre-wrap'>
-            {<SkillTable character={partyCharacter} />}
-          </p>
+          <SkillTable character={character} />
         </CollapsableContent>
       </div>
     </div>
@@ -53,7 +43,7 @@ const PartyItem = ({ partyCharacter }) => (
 const Party = ({ partyData }) => (
   <div className='bg-neutral-focus h-screen'>
     {partyData.filter((item) => (item.name == 'Gunnar Hrolfsson')).map((item) =>
-      <PartyItem partyCharacter={item} />)}
+      <PartyItem character={item} />)}
   </div>
 )
 

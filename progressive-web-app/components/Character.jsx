@@ -43,77 +43,83 @@ export const BasicInfo = ({ character }) => (
 export const SkillTable = ({ character }) => (
     <div className='w-12/12'>
         <table className="table table-compact w-full">
+            <thead>
+                <tr>
+                    <th>Skill</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
-                    <th className='pl-8'>Artisan</th>
+                    <th className='pl-4'>Artisan</th>
                     <td className='p-auto'>{character.art}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Athletics</th>
+                    <th className='pl-4'>Athletics</th>
                     <td className='p-auto'>{character.athletics}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Charm</th>
+                    <th className='pl-4'>Charm</th>
                     <td className='p-auto'>{character.charm}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Charm Animal</th>
+                    <th className='pl-4'>Charm Animal</th>
                     <td className='p-auto'>{character.charm_animal}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Climb</th>
+                    <th className='pl-4'>Climb</th>
                     <td className='p-auto'>{character.climb}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Cool</th>
+                    <th className='pl-4'>Cool</th>
                     <td className='p-auto'>{character.cool}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Consume Alcohol</th>
+                    <th className='pl-4'>Consume Alcohol</th>
                     <td className='p-auto'>{character.consume_alcohol}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Dodge</th>
+                    <th className='pl-4'>Dodge</th>
                     <td className='p-auto'>{character.dodge}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Endurance</th>
+                    <th className='pl-4'>Endurance</th>
                     <td className='p-auto'>{character.endurance}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Haggle</th>
+                    <th className='pl-4'>Haggle</th>
                     <td className='p-auto'>{character.haggle}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Intimidate</th>
+                    <th className='pl-4'>Intimidate</th>
                     <td className='p-auto'>{character.intimidate}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Intuition</th>
+                    <th className='pl-4'>Intuition</th>
                     <td className='p-auto'>{character.intuition}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Leadership</th>
+                    <th className='pl-4'>Leadership</th>
                     <td className='p-auto'>{character.leadership}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Navigation</th>
+                    <th className='pl-4'>Navigation</th>
                     <td className='p-auto'>{character.navigation}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Outdoor Survival</th>
+                    <th className='pl-4'>Outdoor Survival</th>
                     <td className='p-auto'>{character.outdoor_survival}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Perception</th>
+                    <th className='pl-4'>Perception</th>
                     <td className='p-auto'>{character.perception}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Ride</th>
+                    <th className='pl-4'>Ride</th>
                     <td className='p-auto'>{character.ride}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Stealth</th>
+                    <th className='pl-4'>Stealth</th>
                     <td className='p-auto'>{character.stealth}</td>
                 </tr>
             </tbody>
@@ -124,25 +130,31 @@ export const SkillTable = ({ character }) => (
 export const ArmorTable = ({ character }) => (
     <div className='w-12/12'>
         <table className="table table-compact w-full">
+            <thead>
+                <tr>
+                    <th>Armor Slot</th>
+                    <th>Armor Points</th>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
-                    <th className='pl-8'>Head</th>
+                    <th className='pl-4'>Head</th>
                     <td className='p-auto'>{character.head}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Right arm</th>
+                    <th className='pl-4'>Right arm</th>
                     <td className='p-auto'>{character.right_arm}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Left arm</th>
+                    <th className='pl-4'>Left arm</th>
                     <td className='p-auto'>{character.left_arm}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Right leg</th>
+                    <th className='pl-4'>Right leg</th>
                     <td className='p-auto'>{character.right_leg}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Left leg</th>
+                    <th className='pl-4'>Left leg</th>
                     <td className='p-auto'>{character.left_leg}</td>
                 </tr>
             </tbody>
@@ -153,84 +165,278 @@ export const ArmorTable = ({ character }) => (
 export const ProvidenceTable = ({ character }) => (
     <div className='w-12/12'>
         <table className="table table-compact w-full">
+            <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
-                    <th className='pl-8'>Fate</th>
+                    <th className='pl-4'>Fate</th>
                     <td className='p-auto'>{character.fate}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Fortune</th>
+                    <th className='pl-4'>Fortune</th>
                     <td className='p-auto'>{character.fortune}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Resilience</th>
+                    <th className='pl-4'>Resilience</th>
                     <td className='p-auto'>{character.resilience}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Resolve</th>
+                    <th className='pl-4'>Resolve</th>
                     <td className='p-auto'>{character.resolve}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Motivation</th>
+                    <th className='pl-4'>Motivation</th>
                     <td className='p-auto'>{character.motivation_value}</td>
                 </tr>
-                {/* <tr>
-            <th className='pl-8'>Max Wounds</th>
-            <td className='p-auto'>{character.wounds}</td>
-          </tr>
-          <tr>
-            <th className='pl-8'>Corruption</th>
-            <td className='p-auto'>{character.corruption}</td>
-          </tr> */}
+                <tr>
+                    <th className='pl-4'>Corruption</th>
+                    <td className='p-auto'>{character.corruption}</td>
+                </tr>
             </tbody>
         </table>
+        {/* {character.mutations ? <div className="ml-1 mt-3">
+            <p><b>Mutations:</b> {character.mutations}</p>
+        </div> : <div></div>} */}
+        <div className="ml-1 mt-3 mb-1">
+            <b>Mutations</b>
+            <p className='text-sm whitespace-pre-wrap'>
+                {character.mutations}
+            </p>
+        </div>
+        <div className="ml-1 mb-1">
+            <b>Short term ambitions</b>
+            <p className='text-sm whitespace-pre-wrap'>
+                {character.short_term_ambitions}
+            </p>
+        </div>
+        <div className="ml-1 mb-1">
+            <b>Long term ambitions</b>
+            <p className='text-sm whitespace-pre-wrap'>
+                {character.short_term_ambitions}
+            </p>
+        </div>
+        <div className="ml-1 mb-1">
+            <b>Psychology</b>
+            <p className='text-sm whitespace-pre-wrap'>
+                {character.psychology}
+            </p>
+        </div>
+        <div className="ml-1 mb-1">
+            <b>Secrets</b>
+            <p className='text-sm whitespace-pre-wrap'>
+                {character.secrets}
+            </p>
+        </div>
+    </div>
+)
+
+export const BasicData = ({ character }) => (
+    <div className='w-12/12'>
+        <b>Background Story</b>
+        <p className='text-sm italic whitespace-pre-wrap'>
+            {character.background_story}
+        </p>
+        <div className='w-12/12'>
+            <table className="mt-2 table table-compact w-full">
+                <tbody>
+                    <tr className=''>
+                        <td className='pl-4'><b>Movement</b>&nbsp;{character.movement}</td>
+                        <td className=''><b>Walk</b>&nbsp;{character.walk}</td>
+                        <td className=''><b>Run</b>&nbsp;{character.run}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div className='w-12/12'>
+            <table className="mt-3 table table-compact w-full">
+                <tbody>
+                    <tr>
+                        <th className='pl-4'>Species</th>
+                        <td className='p-auto'>{character.species}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Age</th>
+                        <td className='p-auto'>{character.age}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Height</th>
+                        <td className='p-auto'>{character.height} feet</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Hair</th>
+                        <td className='p-auto'>{character.hair}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Eyes</th>
+                        <td className='p-auto'>{character.eyes}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Skin Color</th>
+                        <td className='p-auto'>{character.skin_color}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Birthplace</th>
+                        <td className='p-auto'>{character.birthplace}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Class</th>
+                        <td className='p-auto'>{character.character_class}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Career</th>
+                        <td className='p-auto'>{character.career}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Career Level</th>
+                        <td className='p-auto'>{character.career_level}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Career Path</th>
+                        <td className='p-auto text-xs'>{character.career_path.split(' ').slice(-3)}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Career Status</th>
+                        <td className='p-auto'>{character.status}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Mother</th>
+                        <td className='p-auto'>{character.mother}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Father</th>
+                        <td className='p-auto'>{character.father}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Siblings</th>
+                        <td className='p-auto'>{character.siblings}</td>
+                    </tr>
+                    <tr>
+                        <th className='pl-4'>Couple</th>
+                        <td className='p-auto'>{character.couple}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 )
 
 export const CharacteristicsTable = ({ character }) => (
     <div className='w-12/12'>
         <table className="table table-compact w-full">
+            <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
-                    <th className='pl-8'>Weapon Skill</th>
+                    <th className='pl-4'>Weapon Skill</th>
                     <td className='p-auto'>{character.weapon_skill}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Ballistic Skill</th>
+                    <th className='pl-4'>Ballistic Skill</th>
                     <td className='p-auto'>{character.ballistic_skill}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Strength</th>
+                    <th className='pl-4'>Strength</th>
                     <td className='p-auto'>{character.strength}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Toughness</th>
+                    <th className='pl-4'>Toughness</th>
                     <td className='p-auto'>{character.toughness}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Intelligence</th>
+                    <th className='pl-4'>Intelligence</th>
                     <td className='p-auto'>{character.intelligence}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Agility</th>
+                    <th className='pl-4'>Agility</th>
                     <td className='p-auto'>{character.agility}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Dexterity</th>
+                    <th className='pl-4'>Dexterity</th>
                     <td className='p-auto'>{character.dexterity}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Intelligence</th>
+                    <th className='pl-4'>Intelligence</th>
                     <td className='p-auto'>{character.intelligence}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Willpower</th>
+                    <th className='pl-4'>Willpower</th>
                     <td className='p-auto'>{character.willpower}</td>
                 </tr>
                 <tr>
-                    <th className='pl-8'>Fellowship</th>
+                    <th className='pl-4'>Fellowship</th>
                     <td className='p-auto'>{character.fellowship}</td>
                 </tr>
+            </tbody>
+        </table>
+    </div>
+)
+
+export const InventoryTable = ({ characterItems, characterArmor, characterWeapons }) => (
+    <div className='w-12/12'>
+        <table className="table mb-2 table-compact w-full">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Enc</th>
+                </tr>
+            </thead>
+            <tbody>
+                {characterItems.map((item) => (
+                    <tr>
+                        <th className='pl-4'>{item.name}</th>
+                        <td className='p-auto'>{item.encumbrance}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+        <table className="table mb-2 table-compact w-full">
+            <thead>
+                <tr>
+                    <th>Armor</th>
+                    <th>Locations</th>
+                    <th>Enc</th>
+                    <th>AP</th>
+                </tr>
+            </thead>
+            <tbody>
+                {characterArmor.map((item) => (
+                    <tr>
+                        <th className='pl-4'>{item.name}</th>
+                        <td className='p-auto'>{item.locations}</td>
+                        <td className='p-auto'>{item.encumbrance}</td>
+                        <td className='p-auto'>{item.armor_points}</td>
+                    </tr>
+                )) || <div></div>}
+            </tbody>
+        </table>
+        <table className="table table-compact w-full">
+            <thead>
+                <tr>
+                    <th>Weapon</th>
+                    <th>Group</th>
+                    <th>Enc</th>
+                    <th>Range</th>
+                    <th>Damage</th>
+                </tr>
+            </thead>
+            <tbody>
+                {characterWeapons.map((item) => (
+                    <tr>
+                        <th className='pl-4'>{item.name}</th>
+                        <td className='p-auto'>{item.group}</td>
+                        <td className='p-auto'>{item.encumbrance}</td>
+                        <td className='p-auto'>{item.weapon_range}</td>
+                        <td className='p-auto'>{item.damage}</td>
+                    </tr>
+                ))}
             </tbody>
         </table>
     </div>
