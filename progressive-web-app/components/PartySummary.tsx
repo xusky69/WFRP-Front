@@ -13,13 +13,13 @@ interface PartySummaryProps {
 
 const PartySummary: FunctionComponent<PartySummaryProps> = ({ partyData }) => {
     return (
-        <div className="m-3 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
-            <div className="card-body p-5 overflow-x-hidden">
-                <h2 className="card-title">
+        <div className="m-2 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
+            <div className="card-body p-2 overflow-x-hidden">
+                <h2 className="card-title mt-1 ml-2">
                     <GiAxeSword size="24" /> Party Summary
                 </h2>
                 
-                <table className="table table-compact w-12/12">
+                <table className="table table-compact m-2 w-12/12">
                     <tbody>
                         {partyData.map((item, i) => (
                             <tr key={"journal_" + String(i)}>

@@ -12,7 +12,7 @@ interface CampaignProps {
 
 const Campaign: FunctionComponent<CampaignProps> = ({ campaignData }) => {
     return (
-        <div className="m-3 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
+        <div className="m-2 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
             <div className='max-h-64 overflow-hidden'>
                 <img
                     src={campaignData.cover_image}
@@ -20,7 +20,7 @@ const Campaign: FunctionComponent<CampaignProps> = ({ campaignData }) => {
                     className='object-scale-down w-screen'
                 />
             </div>
-            <div className="card-body p-5">
+            <div className="card-body p-4">
                 <h2 className="card-title">
                     {campaignData.name}
                 </h2>

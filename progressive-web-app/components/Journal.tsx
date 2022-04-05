@@ -13,7 +13,7 @@ export interface JournalProps {
 
 // functional components
 const JournalEntries: FunctionComponent<JournalProps> = ({ journalEntries }) => (
-    <div className="m-3 w-12/12 card bg-neutral text-neutral-content shadow-xl">
+    <div className="m-2 w-12/12 card bg-neutral text-neutral-content shadow-xl">
         <div className="card-body p-1">
             <div tabIndex={0} className="collapse collapse-arrow">
                 <input type="checkbox" />

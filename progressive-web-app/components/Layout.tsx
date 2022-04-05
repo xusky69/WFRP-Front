@@ -5,6 +5,9 @@ import {
     GiDwarfHelmet,
     GiBookmarklet,
     GiBeerStein,
+    GiEvilMoon,
+    GiSpikedDragonHead,
+    GiDiceTwentyFacesTwenty
 } from 'react-icons/gi'
 import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { BiLogOut } from 'react-icons/bi'
@@ -69,7 +72,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
                         </a>
                     </div>
                 </div>
-                <div className='bg-neutral-focus'>
+                <div className='bg-neutral-focus overflow-y-scroll'>
                     {children}
                 </div>
             </div>
@@ -91,14 +94,32 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
                         </Link>
                     </li>
                     <li>
+                        {/* <Link href="/character"> */}
                         <a className='pb-0 active:bg-neutral hover:bg-neutral'>
                             <SidebarIcon text='Character' icon={<GiDwarfHelmet size="36" />} />
                         </a>
+                        {/* </Link> */}
                     </li>
                     <li>
+                        {/* <Link href="/combat"> */}
                         <a className='pb-0 active:bg-neutral hover:bg-neutral'>
                             <SidebarIcon text='Combat' icon={<GiBroadsword size="36" />} />
                         </a>
+                        {/* </Link> */}
+                    </li>
+                    <li>
+                        {/* <Link href="/enemies"> */}
+                        <a className='pb-0 active:bg-neutral hover:bg-neutral'>
+                            <SidebarIcon text='Enemies' icon={<GiSpikedDragonHead size="36" />} />
+                        </a>
+                        {/* </Link> */}
+                    </li>
+                    <li>
+                        {/* <Link href="/album"> */}
+                        <a className='pb-0 active:bg-neutral hover:bg-neutral'>
+                            <SidebarIcon text='Memories' icon={<GiEvilMoon size="36" />} />
+                        </a>
+                        {/* </Link> */}
                     </li>
                     {/* <li><a className='pb-0 active:bg-neutral hover:bg-neutral'><SidebarIcon text='Combat' icon={<GiBroadsword size="36" />} /></a></li> */}
                     {/* <li><a className='pb-0 active:bg-neutral hover:bg-neutral'><SidebarIcon text='Weapons' icon={<GiCrossbow size="36" />} /></a></li> */}
