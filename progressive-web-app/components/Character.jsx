@@ -394,8 +394,8 @@ export const InventoryTable = ({ characterItems, characterArmor, characterWeapon
                 </tr>
             </thead>
             <tbody>
-                {characterItems.map((item) => (
-                    <tr>
+                {characterItems.map((item,i) => (
+                    <tr key={`item_${i}`}>
                         <th className='pl-4'>{item.name}</th>
                         <td className='p-auto'>{item.encumbrance}</td>
                     </tr>
@@ -412,8 +412,8 @@ export const InventoryTable = ({ characterItems, characterArmor, characterWeapon
                 </tr>
             </thead>
             <tbody>
-                {characterArmor.map((item) => (
-                    <tr>
+                {characterArmor.map((item,i) => (
+                    <tr key={`armor_${i}`}>
                         <th className='pl-4'>{item.name}</th>
                         <td className='p-auto'>{item.locations}</td>
                         <td className='p-auto'>{item.encumbrance}</td>
@@ -433,8 +433,8 @@ export const InventoryTable = ({ characterItems, characterArmor, characterWeapon
                 </tr>
             </thead>
             <tbody>
-                {characterWeapons.map((item) => (
-                    <tr>
+                {characterWeapons.map((item,i) => (
+                    <tr key={`weapon_${i}`}>
                         <th className='pl-4'>{item.name}</th>
                         <td className='p-auto'>{item.group}</td>
                         <td className='p-auto'>{item.encumbrance}</td>
@@ -456,8 +456,8 @@ export const InventoryTable = ({ characterItems, characterArmor, characterWeapon
                 </tr>
             </thead>
             <tbody>
-                {characterSpells.map((item) => (
-                    <tr>
+                {characterSpells.map((item,i) => (
+                    <tr key={`spell_${i}`}>
                         <th className='pl-4'>{item.name}</th>
                         <td className='p-auto'>{item.tn}</td>
                         <td className='p-auto'>{item.spell_range}</td>
@@ -482,8 +482,8 @@ export const TalentsTable = ({ character, characterTalents, characterAdvancedSki
                 </tr>
             </thead>
             <tbody>
-                {characterTalents.map((item) => (
-                    <tr>
+                {characterTalents.map((item,i) => (
+                    <tr key={`talent_${i}`}>
                         <th className='pl-4'>{item.name}</th>
                         <td className='p-auto'>{item.times_taken}</td>
                         <td className='p-auto'>{item.description}</td>
@@ -501,8 +501,8 @@ export const TalentsTable = ({ character, characterTalents, characterAdvancedSki
                 </tr>
             </thead>
             <tbody>
-                {characterAdvancedSkills.map((item) => (
-                    <tr>
+                {characterAdvancedSkills.map((item,i) => (
+                    <tr key={`skill_${i}`}>
                         <th className='pl-4 text-xs'>{item.name}</th>
                         <td className='p-auto'>{item.characteristic.slice(0, 3)}</td>
                         <td className='p-auto'>{item.value}</td>

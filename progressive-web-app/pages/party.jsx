@@ -40,8 +40,8 @@ const PartyItem = ({ character }) => (
 // functional component
 const Party = ({ partyData }) => (
   <div className='bg-neutral-focus h-screen'>
-    {partyData.filter((item) => (item.name == 'Gunnar Hrolfsson')).map((item) =>
-      <PartyItem character={item} />)}
+    {partyData.filter((item) => (item.name == 'Gunnar Hrolfsson')).map((item, i) =>
+      <PartyItem character={item} key={`character_${i}`} />)}
   </div>
 )
 
