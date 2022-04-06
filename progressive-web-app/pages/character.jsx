@@ -1,5 +1,15 @@
 import { withSessionSsr, getUnauthRedirect } from '../lib/withSession';
-import { getPartyData } from '../lib/common';
+import {
+  getPartyData,
+  getAdvancedSkillData,
+  getArmorData,
+  getCampaignData,
+  getItemData,
+  getJournalData,
+  getSpellData,
+  getTalentData,
+  getWeaponData
+} from '../lib/common';
 import {
   GiScrollQuill,
   GiAbacus,
@@ -51,11 +61,11 @@ const Character = ({ character, characterItems, characterArmor, characterWeapons
           <CollapsableContent title={<div className='flex'><GiOrbital size={28} /> &nbsp; Destiny & Secrets </div>}>
             <ProvidenceTable character={character} />
           </CollapsableContent>
-          <CollapsableContent title={<div className='flex'><GiOrbital size={28} /> &nbsp; Talents & Advanced Skills </div>}>
-            <TalentsTable 
-            character={character}
-            characterTalents={characterTalents} 
-            characterAdvancedSkills={characterAdvancedSkills}
+          <CollapsableContent title={<div className='flex'><GiSwordsEmblem size={28} /> &nbsp; Talents & Advanced Skills </div>}>
+            <TalentsTable
+              character={character}
+              characterTalents={characterTalents}
+              characterAdvancedSkills={characterAdvancedSkills}
             />
           </CollapsableContent>
         </div>
@@ -64,53 +74,6 @@ const Character = ({ character, characterItems, characterArmor, characterWeapons
   </div>
 )
 
-async function getItemData({ character, username, password, apiUrl }) {
-  const queryString = qs.stringify({
-    character: character.uuid,
-  })
-  const response = await axios.get(`${apiUrl}items/?${queryString}`, { auth: { username, password } })
-  return response.data
-}
-
-async function getWeaponData({ character, username, password, apiUrl }) {
-  const queryString = qs.stringify({
-    character: character.uuid,
-  })
-  const response = await axios.get(`${apiUrl}weapons/?${queryString}`, { auth: { username, password } })
-  return response.data
-}
-
-async function getArmorData({ character, username, password, apiUrl }) {
-  const queryString = qs.stringify({
-    character: character.uuid,
-  })
-  const response = await axios.get(`${apiUrl}armor/?${queryString}`, { auth: { username, password } })
-  return response.data
-}
-
-async function getTalentData({ character, username, password, apiUrl }) {
-  const queryString = qs.stringify({
-    character: character.uuid,
-  })
-  const response = await axios.get(`${apiUrl}talents/?${queryString}`, { auth: { username, password } })
-  return response.data
-}
-
-async function getAdvancedSkillData({ character, username, password, apiUrl }) {
-  const queryString = qs.stringify({
-    character: character.uuid,
-  })
-  const response = await axios.get(`${apiUrl}advanced-skills/?${queryString}`, { auth: { username, password } })
-  return response.data
-}
-
-async function getSpellData({ character, username, password, apiUrl }) {
-  const queryString = qs.stringify({
-    character: character.uuid,
-  })
-  const response = await axios.get(`${apiUrl}spells/?${queryString}`, { auth: { username, password } })
-  return response.data
-}
 
 // prop func
 async function getServerSidePropsBase({ req }) {
@@ -122,18 +85,15 @@ async function getServerSidePropsBase({ req }) {
 
   const partyData = await getPartyData({ campaign, username, password, apiUrl })
   const characterData = partyData.filter(item => item.user == username)[0]
-  const itemData = await getItemData({ character: characterData.uuid, username, password, apiUrl })
-  const armorData = await getArmorData({ character: characterData.uuid, username, password, apiUrl })
-  const weaponData = await getWeaponData({ character: characterData.uuid, username, password, apiUrl })
-  const spellData = await getSpellData({ character: characterData.uuid, username, password, apiUrl })
-  const talentData = await getTalentData({ character: characterData.uuid, username, password, apiUrl })
-  const advancedSkillData = await getAdvancedSkillData({ character: characterData.uuid, username, password, apiUrl })
 
-  // const [itemD, journalEntries, partyData] = await Promise.all([
-  //   getCampaignData({ campaign, username, password, apiUrl }),
-  //   getJournalData({ campaign, username, password, apiUrl }),
-  //   getPartyData({ campaign, username, password, apiUrl })
-  // ])
+  const [itemData, armorData, weaponData, spellData, talentData, advancedSkillData] = await Promise.all([
+    getItemData({ character: characterData.uuid, username, password, apiUrl }),
+    getArmorData({ character: characterData.uuid, username, password, apiUrl }),
+    getWeaponData({ character: characterData.uuid, username, password, apiUrl }),
+    getSpellData({ character: characterData.uuid, username, password, apiUrl }),
+    getTalentData({ character: characterData.uuid, username, password, apiUrl }),
+    getAdvancedSkillData({ character: characterData.uuid, username, password, apiUrl })
+  ])
 
   return {
     props: {

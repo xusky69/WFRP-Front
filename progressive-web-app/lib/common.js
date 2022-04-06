@@ -47,3 +47,51 @@ export async function getPartyData({ campaign, username, password, apiUrl }) {
     const response = await axios.get(`${apiUrl}playable-characters/?${partyQueryString}`, { auth: { username, password } })
     return response.data.map((item) => (item))
 }
+
+export async function getItemData({ character, username, password, apiUrl }) {
+    const queryString = qs.stringify({
+        character: character.uuid,
+    })
+    const response = await axios.get(`${apiUrl}items/?${queryString}`, { auth: { username, password } })
+    return response.data
+}
+
+export async function getWeaponData({ character, username, password, apiUrl }) {
+    const queryString = qs.stringify({
+        character: character.uuid,
+    })
+    const response = await axios.get(`${apiUrl}weapons/?${queryString}`, { auth: { username, password } })
+    return response.data
+}
+
+export async function getArmorData({ character, username, password, apiUrl }) {
+    const queryString = qs.stringify({
+        character: character.uuid,
+    })
+    const response = await axios.get(`${apiUrl}armor/?${queryString}`, { auth: { username, password } })
+    return response.data
+}
+
+export async function getTalentData({ character, username, password, apiUrl }) {
+    const queryString = qs.stringify({
+        character: character.uuid,
+    })
+    const response = await axios.get(`${apiUrl}talents/?${queryString}`, { auth: { username, password } })
+    return response.data
+}
+
+export async function getAdvancedSkillData({ character, username, password, apiUrl }) {
+    const queryString = qs.stringify({
+        character: character.uuid,
+    })
+    const response = await axios.get(`${apiUrl}advanced-skills/?${queryString}`, { auth: { username, password } })
+    return response.data
+}
+
+export async function getSpellData({ character, username, password, apiUrl }) {
+    const queryString = qs.stringify({
+        character: character.uuid,
+    })
+    const response = await axios.get(`${apiUrl}spells/?${queryString}`, { auth: { username, password } })
+    return response.data
+}
