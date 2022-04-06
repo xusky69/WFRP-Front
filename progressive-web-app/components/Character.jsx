@@ -1,5 +1,4 @@
 
-
 export const BasicInfo = ({ character }) => (
     <div className="w-12/12 card bg-base-200 text-neutral-content shadow-xl">
         <div className="card-body p-4">
@@ -21,18 +20,12 @@ export const BasicInfo = ({ character }) => (
                     <p><b>Wounds: </b>{character.wounds}/{character.max_wounds}</p>
                 </div>
             </div>
-            {/* <div className=''>
-          <div><b>Height:</b>&nbsp;{character.height}</div>
-          <div><b>Hair:</b>&nbsp;{character.hair}</div>
-          <div><b>Eyes:</b>&nbsp;{character.eyes}</div>
-        </div> */}
             <table className="mt-2 table table-compact overflow-auto">
                 <tbody>
                     <tr className=''>
-                        <th className='pl-4'>XP</th>
-                        <td className=''><b>Current</b>&nbsp;{character.current_experience}</td>
-                        <td className=''><b>Spent</b>&nbsp;{character.spent_experience}</td>
-                        <td className=''><b>Total</b>&nbsp;{parseFloat(character.current_experience) + parseFloat(character.spent_experience)}</td>
+                        <td className='pl-8'><b>Pennies</b>&nbsp;{character.brass_pennies}</td>
+                        <td className=''><b>Shillings</b>&nbsp;{character.silver_shillings}</td>
+                        <td className=''><b>Crowns</b>&nbsp;{character.gold_crowns}</td>
                     </tr>
                 </tbody>
             </table>
@@ -252,7 +245,19 @@ export const BasicData = ({ character }) => (
             </table>
         </div>
         <div className='w-12/12'>
-            <table className="mt-3 table table-compact w-full">
+            <table className="mt-2 table table-compact overflow-auto w-full">
+                <tbody>
+                    <tr className=''>
+                        <th className='pl-4'>XP</th>
+                        <td className=''><b>Current</b>&nbsp;{character.current_experience}</td>
+                        <td className=''><b>Spent</b>&nbsp;{character.spent_experience}</td>
+                        <td className=''><b>Total</b>&nbsp;{parseFloat(character.current_experience) + parseFloat(character.spent_experience)}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div className='w-12/12'>
+            <table className="mt-2 table table-compact w-full">
                 <tbody>
                     <tr>
                         <th className='pl-4'>Species</th>
