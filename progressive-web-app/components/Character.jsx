@@ -296,7 +296,7 @@ export const BasicData = ({ character }) => (
                     </tr>
                     <tr>
                         <th className='pl-4'>Career Path</th>
-                        <td className='p-auto text-xs'>{character.career_path.split(' ').slice(-3)}</td>
+                        <td className='p-auto'>{character.career_path.split(' ').slice(-3)}</td>
                     </tr>
                     <tr>
                         <th className='pl-4'>Career Status</th>
@@ -379,12 +379,12 @@ export const CharacteristicsTable = ({ character }) => (
     </div>
 )
 
-export const InventoryTable = ({ characterItems, characterArmor, characterWeapons }) => (
+export const InventoryTable = ({ characterItems, characterArmor, characterWeapons, characterSpells }) => (
     <div className='w-12/12'>
         <table className="table mb-2 table-compact w-full">
             <thead>
                 <tr>
-                    <th>Item Name</th>
+                    <th>Item</th>
                     <th>Enc</th>
                 </tr>
             </thead>
@@ -437,6 +437,73 @@ export const InventoryTable = ({ characterItems, characterArmor, characterWeapon
                         <td className='p-auto'>{item.damage}</td>
                     </tr>
                 ))}
+            </tbody>
+        </table>
+        <table className="table table-compact w-full">
+            <thead>
+                <tr>
+                    <th className='text-xs'>Spell</th>
+                    <th className='text-xs'>TN</th>
+                    <th className='text-xs'>RNG</th>
+                    <th className='text-xs'>TRGT</th>
+                    <th className='text-xs'>Time</th>
+                    <th className='text-xs'>EFFECT</th>
+                </tr>
+            </thead>
+            <tbody>
+                {characterSpells.map((item) => (
+                    <tr>
+                        <th className='pl-4'>{item.name}</th>
+                        <td className='p-auto'>{item.tn}</td>
+                        <td className='p-auto'>{item.spell_range}</td>
+                        <td className='p-auto'>{item.target}</td>
+                        <td className='p-auto'>{item.duration}</td>
+                        <td className='p-auto'>{item.effect}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    </div>
+)
+
+export const TalentsTable = ({ character, characterTalents, characterAdvancedSkills }) => (
+    <div className='w-12/12'>
+        <table className="table mb-2 table-compact w-full overflow-x-auto">
+            <thead>
+                <tr>
+                    <th>Talent</th>
+                    <th>Times Taken</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {characterTalents.map((item) => (
+                    <tr>
+                        <th className='pl-4'>{item.name}</th>
+                        <td className='p-auto'>{item.times_taken}</td>
+                        <td className='p-auto'>{item.description}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+        <table className="table mb-2 table-compact w-full">
+            <thead>
+                <tr>
+                    <th>Adv. Skill</th>
+                    <th>Attr.</th>
+                    <th>Bonus</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {characterAdvancedSkills.map((item) => (
+                    <tr>
+                        <th className='pl-4 text-xs'>{item.name}</th>
+                        <td className='p-auto'>{item.characteristic.slice(0, 3)}</td>
+                        <td className='p-auto'>{item.value}</td>
+                        <td className='p-auto'>{character[item.characteristic] + item.value}</td>
+                    </tr>
+                )) || <div></div>}
             </tbody>
         </table>
     </div>

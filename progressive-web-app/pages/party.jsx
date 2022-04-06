@@ -25,13 +25,11 @@ const PartyItem = ({ character }) => (
         <CollapsableContent title={<div className='flex'><GiScrollQuill size={28} /> &nbsp; Basic Data </div>}>
           <BasicData character={character} />
         </CollapsableContent>
-        <CollapsableContent title={<div className='flex'><GiBreastplate size={28} /> &nbsp; Armor </div>}>
+        <CollapsableContent title={<div className='flex'><GiAbacus size={28} /> &nbsp; Skills & Attributes </div>}>
           <ArmorTable character={character} />
-        </CollapsableContent>
-        <CollapsableContent title={<div className='flex'><GiAbacus size={28} /> &nbsp; Characteristics </div>}>
+          <div className="mt-2"></div>
           <CharacteristicsTable character={character} />
-        </CollapsableContent>
-        <CollapsableContent title={<div className='flex'><GiSwordsEmblem size={26} /> &nbsp; Basic Skills </div>}>
+          <div className='mt-2'></div>
           <SkillTable character={character} />
         </CollapsableContent>
       </div>

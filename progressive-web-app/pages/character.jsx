@@ -17,14 +17,14 @@ import {
   CharacteristicsTable,
   SkillTable,
   InventoryTable,
-  BasicData
+  BasicData,
+  TalentsTable
 } from '../components/Character'
 import axios from "axios"
 import qs from 'qs'
 
-
 // functional component
-const Character = ({ character, characterItems, characterArmor, characterWeapons }) => (
+const Character = ({ character, characterItems, characterArmor, characterWeapons, characterSpells, characterTalents, characterAdvancedSkills }) => (
   <div className='bg-neutral-focus h-screen'>
     <div className='bg-neutral-focus'>
       <div className="m-2 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
@@ -33,24 +33,30 @@ const Character = ({ character, characterItems, characterArmor, characterWeapons
           <CollapsableContent title={<div className='flex'><GiScrollQuill size={28} /> &nbsp; Basic Data </div>}>
             <BasicData character={character} />
           </CollapsableContent>
-          <CollapsableContent title={<div className='flex'><GiBackpack size={26} /> &nbsp; Inventory </div>}>
+          <CollapsableContent title={<div className='flex'><GiBackpack size={26} /> &nbsp; Inventory & Spells </div>}>
             <InventoryTable
               characterItems={characterItems}
               characterWeapons={characterWeapons}
               characterArmor={characterArmor}
+              characterSpells={characterSpells}
             />
           </CollapsableContent>
-          <CollapsableContent title={<div className='flex'><GiBreastplate size={28} /> &nbsp; Armor </div>}>
-            {<ArmorTable character={character} />}
+          <CollapsableContent title={<div className='flex'><GiAbacus size={28} /> &nbsp; Skills & Attributes </div>}>
+            <ArmorTable character={character} />
+            <div className="mt-2"></div>
+            <CharacteristicsTable character={character} />
+            <div className='mt-2'></div>
+            <SkillTable character={character} />
           </CollapsableContent>
-          <CollapsableContent title={<div className='flex'><GiSwordsEmblem size={26} /> &nbsp; Basic Skills </div>}>
-            {<SkillTable character={character} />}
+          <CollapsableContent title={<div className='flex'><GiOrbital size={28} /> &nbsp; Destiny & Secrets </div>}>
+            <ProvidenceTable character={character} />
           </CollapsableContent>
-          <CollapsableContent title={<div className='flex'><GiAbacus size={28} /> &nbsp; Characteristics </div>}>
-            {<CharacteristicsTable character={character} />}
-          </CollapsableContent>
-          <CollapsableContent title={<div className='flex'><GiOrbital size={28} /> &nbsp; Destiny </div>}>
-            {<ProvidenceTable character={character} />}
+          <CollapsableContent title={<div className='flex'><GiOrbital size={28} /> &nbsp; Talents & Advanced Skills </div>}>
+            <TalentsTable 
+            character={character}
+            characterTalents={characterTalents} 
+            characterAdvancedSkills={characterAdvancedSkills}
+            />
           </CollapsableContent>
         </div>
       </div>
@@ -106,8 +112,6 @@ async function getSpellData({ character, username, password, apiUrl }) {
   return response.data
 }
 
-
-
 // prop func
 async function getServerSidePropsBase({ req }) {
 
@@ -136,7 +140,10 @@ async function getServerSidePropsBase({ req }) {
       character: characterData,
       characterItems: itemData,
       characterArmor: armorData,
-      characterWeapons: weaponData
+      characterWeapons: weaponData,
+      characterSpells: spellData,
+      characterTalents: talentData,
+      characterAdvancedSkills: advancedSkillData
     }
   }
 }
