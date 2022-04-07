@@ -72,7 +72,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
                         </a>
                     </div>
                 </div>
-                <div className='bg-neutral-focus overflow-y-scroll'>
+                <div className='bg-neutral-focus overflow-y-auto'>
                     {children}
                 </div>
             </div>
@@ -101,30 +101,30 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
                         </Link>
                     </li>
                     <li>
-                        {/* <Link href="/combat"> */}
-                        <a className='pb-0 active:bg-neutral hover:bg-neutral'>
-                            <SidebarIcon text='Combat' icon={<GiBroadsword size="36" />} />
-                        </a>
-                        {/* </Link> */}
+                        <Link href="/bestiary">
+                            <a className='pb-0 active:bg-neutral hover:bg-neutral'>
+                                <SidebarIcon text='Bestiary' icon={<GiSpikedDragonHead size="36" />} />
+                            </a>
+                        </Link>
                     </li>
                     <li>
-                        {/* <Link href="/enemies"> */}
-                        <a className='pb-0 active:bg-neutral hover:bg-neutral'>
-                            <SidebarIcon text='Enemies' icon={<GiSpikedDragonHead size="36" />} />
-                        </a>
-                        {/* </Link> */}
-                    </li>
-                    <li>
-                        {/* <Link href="/album"> */}
+                        <Link href="/memories">
                         <a className='pb-0 active:bg-neutral hover:bg-neutral'>
                             <SidebarIcon text='Memories' icon={<GiEvilMoon size="36" />} />
                         </a>
-                        {/* </Link> */}
+                        </Link>
                     </li>
                     <li>
                         {/* <Link href="/album"> */}
                         <a className='pb-0 active:bg-neutral hover:bg-neutral'>
                             <SidebarIcon text='Dice' icon={<GiDiceTwentyFacesTwenty size="36" />} />
+                        </a>
+                        {/* </Link> */}
+                    </li>
+                    <li>
+                        {/* <Link href="/combat"> */}
+                        <a className='pb-0 active:bg-neutral hover:bg-neutral'>
+                            <SidebarIcon text='Combat' icon={<GiBroadsword size="36" />} />
                         </a>
                         {/* </Link> */}
                     </li>

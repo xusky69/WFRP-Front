@@ -95,3 +95,23 @@ export async function getSpellData({ character, username, password, apiUrl }) {
     const response = await axios.get(`${apiUrl}spells/?${queryString}`, { auth: { username, password } })
     return response.data
 }
+
+export async function getCreatureData({ username, password, apiUrl }) {
+
+    const response = await axios.get(`${apiUrl}creatures/`, { auth: { username, password } })
+    return response.data
+}
+
+export async function getCreatureTraitData({ username, password, apiUrl }) {
+
+    const response = await axios.get(`${apiUrl}creature-traits/`, { auth: { username, password } })
+    return response.data
+}
+
+export async function getMemoriesData({ campaign, username, password, apiUrl }) {
+    const partyQueryString = qs.stringify({
+        campaign: campaign,
+    })
+    const response = await axios.get(`${apiUrl}memories/?${partyQueryString}`, { auth: { username, password } })
+    return response.data.map((item) => (item))
+}
