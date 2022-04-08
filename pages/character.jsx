@@ -35,7 +35,7 @@ import qs from 'qs'
 
 // functional component
 const Character = ({ character, characterItems, characterArmor, characterWeapons, characterSpells, characterTalents, characterAdvancedSkills }) => (
-  <div className='bg-neutral-focus h-screen'>
+  <div className='bg-neutral-focus mb-2'>
     <div className='bg-neutral-focus'>
       <div className="m-2 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
         <div className="card-body p-2">
