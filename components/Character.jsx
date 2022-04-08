@@ -1,3 +1,4 @@
+import Image from "next/image"
 
 export const BasicInfo = ({ character }) => (
     <div className="w-12/12 card bg-base-200 text-neutral-content shadow-xl">
@@ -5,7 +6,14 @@ export const BasicInfo = ({ character }) => (
             <div className='grid grid-cols-3'>
                 <div className="avatar col-span-1">
                     <div className="w-32 mask mask-squircle bg-neutral-focus">
-                        <img src={character.character_avatar} />
+                        {/* <img src={character.character_avatar} /> */}
+                        <Image
+                            src={character.character_avatar || '/static/img/user_placeholder.png'}   // not working (loading) on production server
+                            alt={'Campaign cover image'}
+                            layout='fill'
+                            width={256}
+                            height={256}
+                        />
                     </div>
                 </div>
                 <div className='pl-4 col-span-2'>
@@ -394,7 +402,7 @@ export const InventoryTable = ({ characterItems, characterArmor, characterWeapon
                 </tr>
             </thead>
             <tbody>
-                {characterItems.map((item,i) => (
+                {characterItems.map((item, i) => (
                     <tr key={`item_${i}`}>
                         <th className='pl-4'>{item.name}</th>
                         <td className='p-auto'>{item.encumbrance}</td>
@@ -412,7 +420,7 @@ export const InventoryTable = ({ characterItems, characterArmor, characterWeapon
                 </tr>
             </thead>
             <tbody>
-                {characterArmor.map((item,i) => (
+                {characterArmor.map((item, i) => (
                     <tr key={`armor_${i}`}>
                         <th className='pl-4'>{item.name}</th>
                         <td className='p-auto'>{item.locations}</td>
@@ -433,7 +441,7 @@ export const InventoryTable = ({ characterItems, characterArmor, characterWeapon
                 </tr>
             </thead>
             <tbody>
-                {characterWeapons.map((item,i) => (
+                {characterWeapons.map((item, i) => (
                     <tr key={`weapon_${i}`}>
                         <th className='pl-4'>{item.name}</th>
                         <td className='p-auto'>{item.group}</td>
@@ -456,7 +464,7 @@ export const InventoryTable = ({ characterItems, characterArmor, characterWeapon
                 </tr>
             </thead>
             <tbody>
-                {characterSpells.map((item,i) => (
+                {characterSpells.map((item, i) => (
                     <tr key={`spell_${i}`}>
                         <th className='pl-4'>{item.name}</th>
                         <td className='p-auto'>{item.tn}</td>
@@ -482,7 +490,7 @@ export const TalentsTable = ({ character, characterTalents, characterAdvancedSki
                 </tr>
             </thead>
             <tbody>
-                {characterTalents.map((item,i) => (
+                {characterTalents.map((item, i) => (
                     <tr key={`talent_${i}`}>
                         <th className='pl-4'>{item.name}</th>
                         <td className='p-auto'>{item.times_taken}</td>
@@ -501,7 +509,7 @@ export const TalentsTable = ({ character, characterTalents, characterAdvancedSki
                 </tr>
             </thead>
             <tbody>
-                {characterAdvancedSkills.map((item,i) => (
+                {characterAdvancedSkills.map((item, i) => (
                     <tr key={`skill_${i}`}>
                         <th className='pl-4 text-xs'>{item.name}</th>
                         <td className='p-auto'>{item.characteristic.slice(0, 3)}</td>

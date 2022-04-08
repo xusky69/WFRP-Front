@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { GiCurledTentacle } from 'react-icons/gi'
 import { CollapsableContent } from '../components/Common'
 
@@ -6,48 +7,55 @@ export const CreatureCard = ({ creature, creatureTraits }) => (
         <div className="w-12/12 card bg-base-200 text-neutral-content shadow-xl mb-2">
             <div className="card-body p-3 pb-4">
                 <div className='max-h-64 overflow-hidden rounded-lg bg-neutral'>
-                    <img
+                    {/* <img
                         src={creature.creature_picture}
                         alt='campaign cover image'
                         className='object-scale-down w-screen'
+                    /> */}
+                    <Image
+                        src={creature.creature_picture || '/static/img/user_placeholder.png'}   // not working (loading) on production server
+                        alt={'creature image'}
+                        layout='responsive'
+                        width={512}
+                        height={512}
                     />
                 </div>
                 <div className='col-span-2'>
-                    <h2 className="card-title mb-1">
+                    <h2 className="card-title mb-0 pl-1">
                         {creature.name}
                     </h2>
                 </div>
-                <table className="table table-compact w-full">
+                <table className="table table-compact w-full ">
                     <thead>
                         <tr>
-                            <th className='text-xs'>M</th>
-                            <th className='text-xs'>WS</th>
-                            <th className='text-xs'>BS</th>
-                            <th className='text-xs'>S</th>
-                            <th className='text-xs'>T</th>
-                            <th className='text-xs'>Ini</th>
-                            <th className='text-xs'>A</th>
-                            <th className='text-xs'>D</th>
-                            <th className='text-xs'>Int</th>
-                            <th className='text-xs'>WP</th>
-                            <th className='text-xs'>FS</th>
-                            <th className='text-xs'>W</th>
+                            <th className='text-xs pr-0 pl-4'>M</th>
+                            <th className='text-xs pr-0 pl-0'>WS</th>
+                            <th className='text-xs pr-0 pl-0'>BS</th>
+                            <th className='text-xs pr-0 pl-0'>S</th>
+                            <th className='text-xs pr-0 pl-0'>T</th>
+                            <th className='text-xs pr-0 pl-0'>Ini</th>
+                            <th className='text-xs pr-0 pl-0'>A</th>
+                            <th className='text-xs pr-0 pl-0'>D</th>
+                            <th className='text-xs pr-0 pl-0'>Int</th>
+                            <th className='text-xs pr-0 pl-0'>WP</th>
+                            <th className='text-xs pr-0 pl-0'>FS</th>
+                            <th className='text-xs pr-0 pl-0'>W</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td className='text-xs'>{creature.movement}</td>
-                            <td className='text-xs'>{creature.weapon_skill}</td>
-                            <td className='text-xs'>{creature.ballistic_skill}</td>
-                            <td className='text-xs'>{creature.strength}</td>
-                            <td className='text-xs'>{creature.toughness}</td>
-                            <td className='text-xs'>{creature.initiative}</td>
-                            <td className='text-xs'>{creature.agility}</td>
-                            <td className='text-xs'>{creature.dexterity}</td>
-                            <td className='text-xs'>{creature.intelligence}</td>
-                            <td className='text-xs'>{creature.willpower}</td>
-                            <td className='text-xs'>{creature.fellowship}</td>
-                            <td className='text-xs'>{creature.max_wounds}</td>
+                            <td className='text-xs pr-0 pl-4'>{creature.movement}</td>
+                            <td className='text-xs pr-0 pl-0'>{creature.weapon_skill}</td>
+                            <td className='text-xs pr-0 pl-0'>{creature.ballistic_skill}</td>
+                            <td className='text-xs pr-0 pl-0'>{creature.strength}</td>
+                            <td className='text-xs pr-0 pl-0'>{creature.toughness}</td>
+                            <td className='text-xs pr-0 pl-0'>{creature.initiative}</td>
+                            <td className='text-xs pr-0 pl-0'>{creature.agility}</td>
+                            <td className='text-xs pr-0 pl-0'>{creature.dexterity}</td>
+                            <td className='text-xs pr-0 pl-0'>{creature.intelligence}</td>
+                            <td className='text-xs pr-0 pl-0'>{creature.willpower}</td>
+                            <td className='text-xs pr-0 pl-0'>{creature.fellowship}</td>
+                            <td className='text-xs pr-0 pl-0'>{creature.max_wounds}</td>
                         </tr>
                     </tbody>
                 </table>

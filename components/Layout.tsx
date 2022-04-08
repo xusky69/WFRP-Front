@@ -20,8 +20,11 @@ type IconProps = {
 
 const SidebarIcon: FunctionComponent<IconProps> = ({ icon, text }) => {
     return (
-        <div className='relative m-0 flex items-center justify-center h-16 w-16 px-2 shadow-lg bg-neutral-focus text-pink-500 rounded-3xl
-                      hover:bg-pink-600 hover:text-white hover:rounded-xl 
+        // <div className='relative m-0 flex items-center justify-center h-16 w-16 px-2 shadow-lg bg-neutral-focus text-pink-500 rounded-3xl
+        //               hover:bg-pink-600 hover:text-white hover:rounded-xl 
+        //                 transition-all duration-300 ease-linear group'>
+        <div className='relative m-0 flex items-center justify-center h-16 w-16 px-2 shadow-lg bg-neutral-focus text-red-600 rounded-3xl
+                      hover:bg-red-600 hover:text-white hover:rounded-xl 
                         transition-all duration-300 ease-linear group'>
             {icon}
             <span className=' absolute w-auto p-2 m-2 mx-4 min-w-max left-14 rounded-md shadow-md 
