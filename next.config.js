@@ -7,4 +7,10 @@ module.exports = withPWA({
     dest: 'public',
     runtimeCaching,
   },
+  images: {
+    domains: ['localhost',
+      'warhammer-rp.herokuapp.com',
+      'wfrp-front.vercel.app',
+      'wfrp-api.s3.amazonaws.com'],
+  },
 })

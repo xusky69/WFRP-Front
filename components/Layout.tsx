@@ -55,7 +55,11 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
                         </label>
                     </div>
                     <div className="flex-1">
-                        <a className="btn btn-ghost normal-case text-xl"><GiWarhammer size={36} /> &nbsp; Warhammer RPG</a>
+                        <Link href="/">
+                            <a className="btn btn-ghost normal-case text-xl">
+                                <GiWarhammer size={36} /> &nbsp; Warhammer RPG
+                            </a>
+                        </Link>
                     </div>
                     {/* <div className="flex-none hidden lg:block">
                         <ul className="menu menu-horizontal">
