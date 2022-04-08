@@ -1,8 +1,8 @@
 {
   "name": "WarhammerRP",
   "short_name": "WHRP",
-  "theme_color": "#ffffff",
-  "background_color": "#004740",
+  "theme_color": "#111317",
+  "background_color": "#111317",
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",
