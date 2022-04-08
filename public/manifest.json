@@ -3,6 +3,7 @@
   "short_name": "WHRP",
   "theme_color": "#111317",
   "background_color": "#111317",
+  "background-color": "#111317",
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",
