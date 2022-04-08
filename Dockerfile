@@ -8,12 +8,12 @@ WORKDIR /home/WFRP_FRONT/
 # RUN apt-get update && echo 'allo'
 
 # install node dependencies
-COPY ./progressive-web-app/package.json .
+COPY ./package.json .
 RUN npm install
 
 # copy the requirements file to the working directory
 # copy the project to the working directory
-ADD ./progressive-web-app/ .
+ADD ./ .
 
 # removed unused env vars
 RUN rm -rf .env.production
