@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import next from 'next';
 // import { GiSpikedDragonHead, GiAxeSword } from 'react-icons/gi'
 
+
 const Home = ({ journalEntries, campaignData, partyData, userData }) => {
 
   const staticUrl = process.env.NEXT_PUBLIC_STATIC_URL
