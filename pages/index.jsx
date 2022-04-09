@@ -4,13 +4,21 @@ import Journal from '../components/Journal'
 import Campaign from '../components/Campaign'
 import PartySummary from '../components/PartySummary';
 import { getCampaignData, getJournalData, getPartyData } from '../lib/common';
+import { useEffect } from 'react';
+import next from 'next';
 // import { GiSpikedDragonHead, GiAxeSword } from 'react-icons/gi'
 
 const Home = ({ journalEntries, campaignData, partyData, userData }) => {
 
+  const staticUrl = process.env.NEXT_PUBLIC_STATIC_URL
+  const staticFolder=process.env.NEXT_PUBLIC_STATIC_FOLDER
+  const urlBase = staticUrl + staticFolder
+  const mediaName = campaignData.cover_image.split(urlBase).slice(-1)
+  const nextCoverImage = '/api/media/' +  mediaName
+
   return (
     <div className='bg-neutral-focus'>
-      <Campaign campaignData={campaignData} />
+      <Campaign campaignData={{...campaignData, cover_image: nextCoverImage}} />
       <PartySummary partyData={partyData} />
       <Journal journalEntries={journalEntries} />
     </div>

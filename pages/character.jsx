@@ -34,45 +34,48 @@ import axios from "axios"
 import qs from 'qs'
 
 // functional component
-const Character = ({ character, characterItems, characterArmor, characterWeapons, characterSpells, characterTalents, characterAdvancedSkills }) => (
-  <div className='bg-neutral-focus mb-2'>
-    <div className='bg-neutral-focus'>
-      <div className="m-2 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
-        <div className="card-body p-2">
-          <BasicInfo character={character} />
-          <CollapsableContent title={<div className='flex'><GiScrollQuill size={28} /> &nbsp; Basic Data </div>}>
-            <BasicData character={character} />
-          </CollapsableContent>
-          <CollapsableContent title={<div className='flex'><GiBackpack size={26} /> &nbsp; Inventory & Spells </div>}>
-            <InventoryTable
-              characterItems={characterItems}
-              characterWeapons={characterWeapons}
-              characterArmor={characterArmor}
-              characterSpells={characterSpells}
-            />
-          </CollapsableContent>
-          <CollapsableContent title={<div className='flex'><GiAbacus size={28} /> &nbsp; Skills & Attributes </div>}>
-            <ArmorTable character={character} />
-            <div className="mt-2"></div>
-            <CharacteristicsTable character={character} />
-            <div className='mt-2'></div>
-            <SkillTable character={character} />
-          </CollapsableContent>
-          <CollapsableContent title={<div className='flex'><GiOrbital size={28} /> &nbsp; Destiny & Secrets </div>}>
-            <ProvidenceTable character={character} />
-          </CollapsableContent>
-          <CollapsableContent title={<div className='flex'><GiSwordsEmblem size={28} /> &nbsp; Talents & Advanced Skills </div>}>
-            <TalentsTable
-              character={character}
-              characterTalents={characterTalents}
-              characterAdvancedSkills={characterAdvancedSkills}
-            />
-          </CollapsableContent>
+const Character = ({ character, characterItems, characterArmor, characterWeapons, characterSpells, characterTalents, characterAdvancedSkills }) => {
+  
+  return (
+    <div className='bg-neutral-focus mb-2'>
+      <div className='bg-neutral-focus'>
+        <div className="m-2 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
+          <div className="card-body p-2">
+            <BasicInfo character={character} />
+            <CollapsableContent title={<div className='flex'><GiScrollQuill size={28} /> &nbsp; Basic Data </div>}>
+              <BasicData character={character} />
+            </CollapsableContent>
+            <CollapsableContent title={<div className='flex'><GiBackpack size={26} /> &nbsp; Inventory & Spells </div>}>
+              <InventoryTable
+                characterItems={characterItems}
+                characterWeapons={characterWeapons}
+                characterArmor={characterArmor}
+                characterSpells={characterSpells}
+              />
+            </CollapsableContent>
+            <CollapsableContent title={<div className='flex'><GiAbacus size={28} /> &nbsp; Skills & Attributes </div>}>
+              <ArmorTable character={character} />
+              <div className="mt-2"></div>
+              <CharacteristicsTable character={character} />
+              <div className='mt-2'></div>
+              <SkillTable character={character} />
+            </CollapsableContent>
+            <CollapsableContent title={<div className='flex'><GiOrbital size={28} /> &nbsp; Destiny & Secrets </div>}>
+              <ProvidenceTable character={character} />
+            </CollapsableContent>
+            <CollapsableContent title={<div className='flex'><GiSwordsEmblem size={28} /> &nbsp; Talents & Advanced Skills </div>}>
+              <TalentsTable
+                character={character}
+                characterTalents={characterTalents}
+                characterAdvancedSkills={characterAdvancedSkills}
+              />
+            </CollapsableContent>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-)
+  )
+}
 
 
 // prop func
