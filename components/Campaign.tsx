@@ -14,19 +14,19 @@ interface CampaignProps {
 const Campaign: FunctionComponent<CampaignProps> = ({ campaignData }) => {
     return (
         <div className="m-2 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
-            <div className='max-h-64 overflow-hidden bg-base-100'>
-                {/* <img
+            <div className='h-64 overflow-hidden bg-base-100'>
+                <img
                     src={campaignData.cover_image}
                     alt='campaign cover image'
                     className='object-scale-down w-screen'
-                /> */}
-                <Image
+                />
+                {/* <Image
                     src={campaignData.cover_image}   // not working (loading) on production server
                     alt={'Campaign cover image'}
                     layout='responsive'
                     width={1920}
                     height={1080}
-                />
+                /> */}
             </div>
             <div className="card-body p-4">
                 <h2 className="card-title">

@@ -19,3 +19,8 @@ yarn create next-app --example progressive-web-app progressive-web-app
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+
+## Setting cache headers for external image sources such as S3
+https://github.com/vercel/next.js/issues/19914
+https://stackoverflow.com/questions/10435334/set-cache-control-for-entire-s3-bucket-automatically-using-bucket-policies
+
