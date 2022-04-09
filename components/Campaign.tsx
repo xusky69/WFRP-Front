@@ -14,11 +14,12 @@ interface CampaignProps {
 const Campaign: FunctionComponent<CampaignProps> = ({ campaignData }) => {
     return (
         <div className="m-2 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
-            <div className='h-64 overflow-hidden bg-base-100'>
+            <div className='max-h-64 overflow-hidden bg-base-100'>
                 <img
                     src={campaignData.cover_image}
                     alt='campaign cover image'
                     className='object-scale-down w-screen'
+                    crossOrigin="anonymous"
                 />
                 {/* <Image
                     src={campaignData.cover_image}   // not working (loading) on production server
