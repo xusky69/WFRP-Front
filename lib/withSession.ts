@@ -12,7 +12,7 @@ const sessionOptions = {
     // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
     cookieOptions: {
         maxCookieAge: 60*60*24*365,
-        secure: process.env.NODE_ENV === "production",
+        secure: false // process.env.NODE_ENV === "production",
     },
 };
 
