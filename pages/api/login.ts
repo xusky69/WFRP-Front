@@ -13,11 +13,11 @@ async function loginRoute(req: LoginRouteRequest, res: NextApiResponse) {
         const campaign: string = String(req.query.campaign)
         const apiUrl: string = String(process.env.NEXT_PUBLIC_API_URL)
         const response = await axios.get(apiUrl, { auth: { username: username, password: password } })
-
+        req.session.destroy()
         const user = { username: username, password: password, campaign: campaign }
         req.session.user = user
-        await req.session.save();
-        res.send({ ok: true });
+        await req.session.save()
+        res.json(user)
 
     } catch (error : any) {
         if(error.response){
