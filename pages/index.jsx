@@ -1,11 +1,8 @@
-import Layout from '../components/Layout'
 import { withSessionSsr, getUnauthRedirect } from '../lib/withSession';
 import Journal from '../components/Journal'
 import Campaign from '../components/Campaign'
 import PartySummary from '../components/PartySummary';
 import { getCampaignData, getJournalData, getPartyData } from '../lib/common';
-import { useEffect } from 'react';
-// import { GiSpikedDragonHead, GiAxeSword } from 'react-icons/gi'
 
 
 const Home = ({ journalEntries, campaignData, partyData, userData }) => {

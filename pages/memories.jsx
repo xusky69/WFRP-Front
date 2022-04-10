@@ -1,12 +1,10 @@
 import { getMemoriesData } from '../lib/common';
 import { withSessionSsr, getUnauthRedirect } from '../lib/withSession';
 import { MemoryCard } from '../components/Memories';
-import { GiWarhammer } from 'react-icons/gi'
 
 // functional component
 const Memories = ({ memoriesData }) => (
     <div className='bg-neutral-focus mb-2'>
-        {/* <GiWarhammer size={500}/> */}
         <div className='bg-neutral-focus'>
             {memoriesData.map((memory,i) => (
                 <div key={`m${i}`} className="m-2 w-12/12 card bg-neutral text-neutral-content shadow-xl">
