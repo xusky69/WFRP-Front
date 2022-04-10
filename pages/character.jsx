@@ -30,8 +30,6 @@ import {
   BasicData,
   TalentsTable
 } from '../components/Character'
-import axios from "axios"
-import qs from 'qs'
 
 // functional component
 const Character = ({ character, characterItems, characterArmor, characterWeapons, characterSpells, characterTalents, characterAdvancedSkills }) => {

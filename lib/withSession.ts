@@ -8,7 +8,7 @@ import {
 
 const sessionOptions = {
     password: "POgV0whwtnKB5k8RYpESvc6kJTi8GbWg",
-    cookieName: "wfrp_session",
+    cookieName: "wfrpsession",
     // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
     cookieOptions: {
         secure: process.env.NODE_ENV === "production",

@@ -9,6 +9,5 @@ module.exports = withPWA({
   },
   images: {
     domains: ['localhost', 'wfrp-api.s3.amazonaws.com'],
-    minimumCacheTTL: 60*60*24,
   },
 })
