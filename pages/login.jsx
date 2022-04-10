@@ -18,18 +18,18 @@ export default function Login() {
             // console.log(password)
             let response
             try {
-                const response = await axios.get('/api/login', { params: { username, password, campaign } })
-                console.log(response.headers)
+                // const response = await axios.get('/api/login', { params: { username, password, campaign } })
+                // console.log(response)
                 // console.log(response.status)
-                // await fetchJson("/api/login", {
-                //     method: "POST",
-                //     headers: { "Content-Type": "application/json" },
-                //     body: JSON.stringify({ username, password, campaign }),
-                // })
+                await fetchJson("/api/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password, campaign }),
+                })
                 router.push('/')
             } catch (error) {
                 console.log(error)
-                setState({ ...state, error: `Request failed with status ${error.response.status}. ${error.response.data.detail} Please check your login credentials` })
+                // setState({ ...state, error: `Request failed with status ${error.response.status}. ${error.response.data.detail} Please check your login credentials` })
             }
         } else {
             setState({ ...state, error: 'please fill the required fields' })

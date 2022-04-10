@@ -7,17 +7,16 @@ type LoginRouteRequest = NextApiRequest & {session:any, query:any}
 
 async function loginRoute(req: LoginRouteRequest, res: NextApiResponse) {
     try {
-
-        const username: string = String(req.query.username)
-        const password: string = String(req.query.password)
-        const campaign: string = String(req.query.campaign)
+        console.log('QUERY IS' + JSON.stringify(req.body))
+        const username: string = String(req.body.username)
+        const password: string = String(req.body.password)
+        const campaign: string = String(req.body.campaign)
         const apiUrl: string = String(process.env.NEXT_PUBLIC_API_URL)
         const response = await axios.get(apiUrl, { auth: { username: username, password: password } })
-        req.session.destroy()
         const user = { username: username, password: password, campaign: campaign }
         req.session.user = user
         await req.session.save()
-        res.json(user)
+        res.send({ ok: true })
 
     } catch (error : any) {
         if(error.response){
