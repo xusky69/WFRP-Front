@@ -24,7 +24,7 @@ const getServerSidePropsBase = async ({ req }) => {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
     const { redirect, username, password, campaign } = getUnauthRedirect(req)
-    if (redirect !== false) { return { redirect } }
+    // if (redirect !== false) { return { redirect } }
 
     const [creatureData, creatureTraitData] = await Promise.all([
         getCreatureData({ username, password, apiUrl }),

@@ -10,9 +10,9 @@ const sessionOptions = {
     password: "POgV0whwtnKB5k8RYpESvc6kJTi8GbWg",
     cookieName: "wfrp_session",
     // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
-    // cookieOptions: {
-    //     secure: process.env.NODE_ENV === "production",
-    // },
+    cookieOptions: {
+        secure: process.env.NODE_ENV === "production",
+    },
 };
 
 export function withSessionRoute(handler: NextApiHandler) {
@@ -33,20 +33,24 @@ export function withSessionSsr<
 type NextIronRequest = NextApiRequest & { session: {user: {username:string, password:string, campaign:string}} };
 
 export function getUnauthRedirect(req: NextIronRequest){
-    if (req.session.user) {
-        const username = req.session.user.username
-        const password = req.session.user.password
-        const campaign = req.session.user.campaign
-        return {redirect: false, username, password, campaign}
-    } else {
-      return {
-        redirect: {
-          permanent: false,
-          destination: "/login",
-        },
-        username: '',
-        password: '',
-        campaign: ''
-      }
-    }
+    const username = req.session.user.username
+    const password = req.session.user.password
+    const campaign = req.session.user.campaign
+    return {redirect: false, username, password, campaign}
+    // if (req.session.user) {
+    //     const username = req.session.user.username
+    //     const password = req.session.user.password
+    //     const campaign = req.session.user.campaign
+    //     return {redirect: false, username, password, campaign}
+    // } else {
+    //   return {
+    //     redirect: {
+    //       permanent: false,
+    //       destination: "/login",
+    //     },
+    //     username: '',
+    //     password: '',
+    //     campaign: ''
+    //   }
+    // }
   }

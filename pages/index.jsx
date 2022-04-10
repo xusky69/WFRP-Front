@@ -21,7 +21,7 @@ async function getServerSidePropsBase({ req }) {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
   const { redirect, username, password, campaign } = getUnauthRedirect(req)
-  if (redirect !== false) { return { redirect } }
+  // if (redirect !== false) { return { redirect } }
 
   const [campaignData, journalEntries, partyData] = await Promise.all([
     getCampaignData({ campaign, username, password, apiUrl }),
