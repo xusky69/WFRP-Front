@@ -7,15 +7,17 @@ import {
 } from "next";
 
 const sessionOptions = {
-    password: "POgV0whwtnKB5k8RYpESvc6kJTi8GbWg",
+    password: "X1BmHiZDfUhPRW5abf5m8l1JSyZp6iBD0FH2",
     cookieName: "wfrpsession",
     // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
     cookieOptions: {
+        maxCookieAge: 60*60*24,
         secure: process.env.NODE_ENV === "production",
     },
 };
 
 export function withSessionRoute(handler: NextApiHandler) {
+    
     return withIronSessionApiRoute(handler, sessionOptions);
 }
 
