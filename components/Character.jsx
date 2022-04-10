@@ -10,7 +10,7 @@ export const BasicInfo = ({ character }) => (
                         <Image
                             src={character.character_avatar || '/static/img/user_placeholder.png'}   // not working (loading) on production server
                             alt={'Campaign cover image'}
-                            layout='fill'
+                            layout='responsive'
                             width={256}
                             height={256}
                         />

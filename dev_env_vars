@@ -1,3 +1,4 @@
-NEXT_PUBLIC_API_URL='http://localhost:8000/'
+# NEXT_PUBLIC_API_URL='http://localhost:8000/'
+NEXT_PUBLIC_API_URL='https://warhammer-rp.herokuapp.com/'
 NEXT_PUBLIC_STATIC_URL='wfrp-api.s3.amazonaws.com/'
 NEXT_PUBLIC_STATIC_FOLDER='media/'
