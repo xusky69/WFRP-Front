@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next'
 import { withSessionRoute } from "../../lib/withSession";
 import axios, { AxiosError } from 'axios'
 
@@ -6,7 +6,6 @@ import axios, { AxiosError } from 'axios'
 type LoginRouteRequest = NextApiRequest & {session:any, query:any}
 
 async function loginRoute(req: LoginRouteRequest, res: NextApiResponse) {
-    req.session.destroy();
     try {
 
         const username: string = String(req.query.username)
@@ -17,8 +16,8 @@ async function loginRoute(req: LoginRouteRequest, res: NextApiResponse) {
 
         const user = { username: username, password: password, campaign: campaign }
         req.session.user = user
-        await req.session.save()
-        res.send({ ok: true })
+        await req.session.save();
+        res.send({ ok: true });
 
     } catch (error : any) {
         if(error.response){
