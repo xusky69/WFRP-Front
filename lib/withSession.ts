@@ -13,6 +13,7 @@ const sessionOptions = {
     cookieOptions: {
         maxCookieAge: 60*60*24*365,
         secure: process.env.NODE_ENV === "production",
+        // domain: process.env.NODE_ENV === 'production' ? '.wh-rpg.vercel.app/' : '.localhost'
     },
 };
 
