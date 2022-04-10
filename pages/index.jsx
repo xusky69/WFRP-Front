@@ -5,7 +5,6 @@ import Campaign from '../components/Campaign'
 import PartySummary from '../components/PartySummary';
 import { getCampaignData, getJournalData, getPartyData } from '../lib/common';
 import { useEffect } from 'react';
-import next from 'next';
 // import { GiSpikedDragonHead, GiAxeSword } from 'react-icons/gi'
 
 
