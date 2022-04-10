@@ -13,11 +13,12 @@ export default function Login() {
         const password = String(event.currentTarget.password.value)
         const campaign = String(event.currentTarget.campaign.value)
         if (username.length > 0 && password.length > 0 && campaign.length > 0) {
-            console.log(username)
-            console.log(password)
+            // console.log(username)
+            // console.log(password)
             let response
             try {
                 response = await axios.get('/api/login', { params: { username, password, campaign } })
+                console.log(response.status)
                 router.push('/')
             } catch (error) {
                 console.log(error)

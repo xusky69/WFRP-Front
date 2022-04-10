@@ -16,8 +16,8 @@ async function loginRoute(req: LoginRouteRequest, res: NextApiResponse) {
 
         const user = { username: username, password: password, campaign: campaign }
         req.session.user = user
-        await req.session.save();
-        res.send({ ok: true });
+        await req.session.save()
+        res.send({ ok: true })
 
     } catch (error : any) {
         if(error.response){
