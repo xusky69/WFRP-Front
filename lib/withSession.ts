@@ -11,7 +11,7 @@ const sessionOptions = {
     cookieName: "wfrpsession",
     // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
     cookieOptions: {
-        maxCookieAge: 60*60*24,
+        maxCookieAge: 60*60*24*365,
         secure: process.env.NODE_ENV === "production",
     },
 };

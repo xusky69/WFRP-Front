@@ -6,6 +6,7 @@ import axios, { AxiosError } from 'axios'
 type LoginRouteRequest = NextApiRequest & {session:any, query:any}
 
 async function loginRoute(req: LoginRouteRequest, res: NextApiResponse) {
+    req.session.destroy();
     try {
 
         const username: string = String(req.query.username)
