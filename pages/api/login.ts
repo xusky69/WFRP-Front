@@ -7,7 +7,6 @@ type LoginRouteRequest = NextApiRequest & {session:any, query:any}
 
 async function loginRoute(req: LoginRouteRequest, res: NextApiResponse) {
     try {
-        console.log('QUERY IS' + JSON.stringify(req.body))
         const username: string = String(req.body.username)
         const password: string = String(req.body.password)
         const campaign: string = String(req.body.campaign)

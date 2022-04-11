@@ -272,6 +272,55 @@
         {
             "language": "typescript",
             "source": [
+                "const username = 'else'\nconst password = 'else123'\nconst apiUrl = 'http://localhost:8000/'\n\nlet response\n\ntry{\n    const queryString = qs.stringify({\n        character__uuid: '1507eff8-0b8b-4672-8261-55b8c20d8918',\n    })\n    const queryUrl = `${apiUrl}items/?${queryString}`\n    console.log(queryUrl)\n    response = await axios.get(queryUrl, { auth: { username, password } })\n}catch(error){\n    console.log(error)\n}"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "http://localhost:8000/items/?character__uuid=1507eff8-0b8b-4672-8261-55b8c20d8918",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "response.data"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "[",
+                                "  {",
+                                "    user: \u001b[32m'else'\u001b[39m,",
+                                "    character: \u001b[32m'1507eff8-0b8b-4672-8261-55b8c20d8918'\u001b[39m,",
+                                "    name: \u001b[32m'10 Bullets'\u001b[39m,",
+                                "    uuid: \u001b[32m'14ce97f9-67df-4861-b8c4-517b642a47cb'\u001b[39m,",
+                                "    creation_date: \u001b[32m'2022-04-11T15:40:38.217044-05:00'\u001b[39m,",
+                                "    last_updated: \u001b[32m'2022-04-11T15:40:38.217066-05:00'\u001b[39m,",
+                                "    description: \u001b[32m''\u001b[39m,",
+                                "    item_type: \u001b[32m''\u001b[39m,",
+                                "    encumbrance: \u001b[33m2\u001b[39m",
+                                "  }",
+                                "]"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "language": "typescript",
+            "source": [
                 ""
             ],
             "outputs": []

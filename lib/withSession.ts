@@ -12,8 +12,7 @@ const sessionOptions = {
     // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
     cookieOptions: {
         maxCookieAge: 60*60*24*365,
-        secure: process.env.NODE_ENV === "production",
-        // domain: process.env.NODE_ENV === 'production' ? '.wh-rpg.vercel.app/' : '.localhost'
+        secure: process.env.NODE_ENV === "production"
     },
 };
 
@@ -36,24 +35,24 @@ export function withSessionSsr<
 type NextIronRequest = NextApiRequest & { session: {user: {username:string, password:string, campaign:string}} };
 
 export function getUnauthRedirect(req: NextIronRequest){
-    const username = req.session.user.username
-    const password = req.session.user.password
-    const campaign = req.session.user.campaign
-    return {redirect: false, username, password, campaign}
-    // if (req.session.user) {
-    //     const username = req.session.user.username
-    //     const password = req.session.user.password
-    //     const campaign = req.session.user.campaign
-    //     return {redirect: false, username, password, campaign}
-    // } else {
-    //   return {
-    //     redirect: {
-    //       permanent: false,
-    //       destination: "/login",
-    //     },
-    //     username: '',
-    //     password: '',
-    //     campaign: ''
-    //   }
-    // }
+    // const username = req.session.user.username
+    // const password = req.session.user.password
+    // const campaign = req.session.user.campaign
+    // return {redirect: false, username, password, campaign}
+    if (req.session.user) {
+        const username = req.session.user.username
+        const password = req.session.user.password
+        const campaign = req.session.user.campaign
+        return {redirect: false, username, password, campaign}
+    } else {
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/login",
+        },
+        username: '',
+        password: '',
+        campaign: ''
+      }
+    }
   }

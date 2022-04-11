@@ -1,3 +1,4 @@
+// taken from the next-iron-session example
 export default async function fetchJson<JSON = unknown>(
     input: RequestInfo,
     init?: RequestInit,

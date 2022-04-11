@@ -82,18 +82,18 @@ async function getServerSidePropsBase({ req }) {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
   const { redirect, username, password, campaign } = getUnauthRedirect(req)
-  // if (redirect !== false) { return { redirect } }
+  if (redirect !== false) { return { redirect } }
 
   const partyData = await getPartyData({ campaign, username, password, apiUrl })
   const characterData = partyData.filter(item => item.user == username)[0]
-
+  
   const [itemData, armorData, weaponData, spellData, talentData, advancedSkillData] = await Promise.all([
-    getItemData({ character: characterData.uuid, username, password, apiUrl }),
-    getArmorData({ character: characterData.uuid, username, password, apiUrl }),
-    getWeaponData({ character: characterData.uuid, username, password, apiUrl }),
-    getSpellData({ character: characterData.uuid, username, password, apiUrl }),
-    getTalentData({ character: characterData.uuid, username, password, apiUrl }),
-    getAdvancedSkillData({ character: characterData.uuid, username, password, apiUrl })
+    getItemData({ character: characterData, username, password, apiUrl }),
+    getArmorData({ character: characterData, username, password, apiUrl }),
+    getWeaponData({ character: characterData, username, password, apiUrl }),
+    getSpellData({ character: characterData, username, password, apiUrl }),
+    getTalentData({ character: characterData, username, password, apiUrl }),
+    getAdvancedSkillData({ character: characterData, username, password, apiUrl })
   ])
 
   return {
