@@ -5,8 +5,9 @@ export const BasicInfo = ({ character }) => (
         <div className="card-body p-4">
             <div className='grid grid-cols-3'>
                 <div className="avatar col-span-1">
-                    <div className="w-32 mask mask-squircle bg-neutral-focus">
+                    <div className="w-32 h-32 mask mask-squircle bg-neutral-focus">
                         {/* <img src={character.character_avatar} /> */}
+                        <div className="w-32 h-32">
                         <Image
                             src={character.character_avatar || '/static/img/user_placeholder.png'}   // not working (loading) on production server
                             alt={'Campaign cover image'}
@@ -14,6 +15,7 @@ export const BasicInfo = ({ character }) => (
                             width={256}
                             height={256}
                         />
+                        </div>
                     </div>
                 </div>
                 <div className='pl-4 col-span-2'>

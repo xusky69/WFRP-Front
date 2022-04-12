@@ -96,9 +96,6 @@ async function getServerSidePropsBase({ req }) {
   const partyData = await getPartyData({ campaign, username, password, apiUrl })
   const campaignData = await getCampaignData({ campaign, username, password, apiUrl })
 
-  console.log(username)
-  console.log(campaignData.master)
-
   if (username === campaignData.master) {
     return {
       props: {

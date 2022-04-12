@@ -13,11 +13,6 @@ export const MemoryCard = ({ memory }) => (
                         width={768}
                         height={512}
                     />
-                    {/* <img
-                        src={memory.memory_picture}
-                        alt='campaign cover image'
-                        className='object-scale-down w-screen'
-                    /> */}
                 </div>
                 <div className='col-span-2'>
                     <b>{processDate(memory.creation_date).slice(0, 10)}</b>
