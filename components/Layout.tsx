@@ -124,7 +124,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
                     <li>
                         {/* <Link href="/album"> */}
                         <a className='pb-0 active:bg-neutral hover:bg-neutral'>
-                            <SidebarIcon text='Dice' icon={<GiDiceTwentyFacesTwenty size="36" />} />
+                            <SidebarIcon text='Dice(WIP)' icon={<GiDiceTwentyFacesTwenty size="36" />} />
                         </a>
                         {/* </Link> */}
                     </li>
