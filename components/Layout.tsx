@@ -128,13 +128,13 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => (
                         </a>
                         {/* </Link> */}
                     </li>
-                    <li>
-                        {/* <Link href="/combat"> */}
+                    {/* <li>
+                        <Link href="/combat">
                         <a className='pb-0 active:bg-neutral hover:bg-neutral'>
                             <SidebarIcon text='Combat' icon={<GiBroadsword size="36" />} />
                         </a>
-                        {/* </Link> */}
-                    </li>
+                        </Link>
+                    </li> */}
                 </ul>
             </div>
         </div>

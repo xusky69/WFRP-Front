@@ -32,8 +32,17 @@ import {
 } from '../components/Character'
 
 // functional component
-const Character = ({ character, characterItems, characterArmor, characterWeapons, characterSpells, characterTalents, characterAdvancedSkills }) => {
-  
+const Character = ({ character, characterItems, characterArmor, characterWeapons, characterSpells, characterTalents, characterAdvancedSkills, isMaster = false }) => {
+
+  if (isMaster) {
+    return <div className="m-4 mb-0 w-12/12 card bg-neutral text-neutral-content shadow-xl">
+      <div className="card-body content-center align-center flex items-center">
+        <h2 className="card-title">You are the Dungeon Master!</h2>
+        {/* <p>You are the dungeon master!</p> */}
+      </div>
+    </div>
+  }
+
   return (
     <div className='bg-neutral-focus mb-2'>
       <div className='bg-neutral-focus'>
@@ -85,8 +94,21 @@ async function getServerSidePropsBase({ req }) {
   if (redirect !== false) { return { redirect } }
 
   const partyData = await getPartyData({ campaign, username, password, apiUrl })
+  const campaignData = await getCampaignData({ campaign, username, password, apiUrl })
+
+  console.log(username)
+  console.log(campaignData.master)
+
+  if (username === campaignData.master) {
+    return {
+      props: {
+        isMaster: true
+      }
+    }
+  }
+
   const characterData = partyData.filter(item => item.user == username)[0]
-  
+
   const [itemData, armorData, weaponData, spellData, talentData, advancedSkillData] = await Promise.all([
     getItemData({ character: characterData, username, password, apiUrl }),
     getArmorData({ character: characterData, username, password, apiUrl }),

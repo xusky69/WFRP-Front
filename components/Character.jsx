@@ -486,7 +486,7 @@ export const TalentsTable = ({ character, characterTalents, characterAdvancedSki
                 <tr>
                     <th>Talent</th>
                     <th>Times Taken</th>
-                    <th>Description</th>
+                    {/* <th>Description</th> */}
                 </tr>
             </thead>
             <tbody>
@@ -494,7 +494,7 @@ export const TalentsTable = ({ character, characterTalents, characterAdvancedSki
                     <tr key={`talent_${i}`}>
                         <th className='pl-4'>{item.name}</th>
                         <td className='p-auto'>{item.times_taken}</td>
-                        <td className='p-auto'>{item.description}</td>
+                        {/* <td className='p-auto'>{item.description}</td> */}
                     </tr>
                 ))}
             </tbody>

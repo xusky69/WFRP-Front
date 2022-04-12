@@ -17,7 +17,7 @@
         {
             "language": "typescript",
             "source": [
-                "const username = 'ricardo'\nconst password = 'ricardo_changeme'\nconst campaign = 'ee4081de-2f27-433d-b02d-b123c52e7900'\nconst apiUrl = 'http://localhost:8000/'"
+                "const username = 'master'\nconst password = 'master123'\nconst campaign = 'cf2ea9ae-e914-44cc-b40a-1a356f82ae26'\nconst apiUrl = 'http://localhost:8000/'"
             ],
             "outputs": []
         },
@@ -37,12 +37,24 @@
                 {
                     "items": [
                         {
-                            "mime": "application/vnd.code.notebook.error",
-                            "value": {
-                                "name": "TypeError",
-                                "message": "Cannot read properties of undefined (reading 'status')",
-                                "stack": "    at <Cell 5> [13, 11]\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async C (/home/shepard/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:113337)\n    at async t.execCode (/home/shepard/.vscode/extensions/donjayamanne.typescript-notebook-2.0.6/out/extension/server/index.js:2:114306)"
-                            }
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "{",
+                                "  campaigns: 'http://localhost:8000/campaigns/',",
+                                "  'journal-entries': 'http://localhost:8000/journal-entries/',",
+                                "  'playable-characters': 'http://localhost:8000/playable-characters/',",
+                                "  items: 'http://localhost:8000/items/',",
+                                "  weapons: 'http://localhost:8000/weapons/',",
+                                "  armor: 'http://localhost:8000/armor/',",
+                                "  talents: 'http://localhost:8000/talents/',",
+                                "  'advanced-skills': 'http://localhost:8000/advanced-skills/',",
+                                "  spells: 'http://localhost:8000/spells/',",
+                                "  memories: 'http://localhost:8000/memories/',",
+                                "  creatures: 'http://localhost:8000/creatures/',",
+                                "  'creature-traits': 'http://localhost:8000/creature-traits/'",
+                                "}",
+                                ""
+                            ]
                         }
                     ]
                 }
@@ -223,14 +235,21 @@
         {
             "language": "typescript",
             "source": [
-                "const queryString = qs.stringify({\n    campaign__uuid: campaign,\n})\n\nlet journalEntries\n\ntry{\n    response = await axios.get(`${apiUrl}journal-entries/?${queryString}`, {auth: { username, password } })\n    journalEntries = response.data.map((item: object) => ({name: item.name, entry_text: item.entry_text, creation_date: item.creation_date}))\n}catch(error){\n    console.log(error.response.status)\n    console.log(error.response.data.detail)\n}"
+                "// const queryString = qs.stringify({\n//     campaign__uuid: campaign,\n// })\n\n// let journalEntries\n\n// try{\n//     response = await axios.get(`${apiUrl}journal-entries/?${queryString}`, {auth: { username, password } })\n//     journalEntries = response.data.map((item: object) => ({name: item.name, entry_text: item.entry_text, creation_date: item.creation_date}))\n// }catch(error){\n//     console.log(error.response.status)\n//     console.log(error.response.data.detail)\n// }"
             ],
             "outputs": []
         },
         {
             "language": "markdown",
             "source": [
-                "### Filter items by character"
+                "### Master"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                ""
             ],
             "outputs": []
         },
@@ -238,90 +257,6 @@
             "language": "markdown",
             "source": [
                 "### "
-            ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "const queryString = qs.stringify({\n    character: uuidChar,\n})\n\nlet response\n\ntry{\n    response = await axios.get(`${apiUrl}items/?${queryString}`, {auth: { username, password } })\n    journalEntries = response.data.map((item: object) => ({name: item.name, entry_text: item.entry_text, creation_date: item.creation_date}))\n}catch(error){\n    console.log(error.response.status)\n    console.log(error.response.data.detail)\n}"
-            ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "// response.data"
-            ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "let urlWithBasePath = \"https://wfrp-api.s3.amazonaws.com/\";\nlet resultUrl = urlWithBasePath.replace(/^http[s]?:\\/\\/.+?\\//, ''); // resultUrl => www.facebook.com\n// const test = axios.get('https://wfrp-api.s3.amazonaws.com/media/ubersreik.jpg?AWSAccessKeyId=AKIAYL5POFDX7AB3CXHG&Signature=FX%2F0EKK%2FzEvziAZfkUyQ0jn6Kt8%3D&Expires=1649629721')"
-            ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "// const staticUrl='wfrp-api.s3.amazonaws.com/'\n// const staticFolder='media/'\n// const urlBase = staticUrl + staticFolder\n// const imgUrl = \"https://wfrp-api.s3.amazonaws.com/media/ubersreik.jpg?AWSAccessKeyId=AKIAYL5POFDX7AB3CXHG&Signature=GyXUHaigYteSsCdsJxoj0vwmyQM%3D&Expires=1649630371\"\n// const media_name = imgUrl.split(urlBase).slice(-1)\n// const image = axios.get(imgUrl, {responseType: 'arraybuffer'}).then(response => Buffer.from(response.data, 'binary'))\n// image"
-            ],
-            "outputs": []
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "const username = 'else'\nconst password = 'else123'\nconst apiUrl = 'http://localhost:8000/'\n\nlet response\n\ntry{\n    const queryString = qs.stringify({\n        character__uuid: '1507eff8-0b8b-4672-8261-55b8c20d8918',\n    })\n    const queryUrl = `${apiUrl}items/?${queryString}`\n    console.log(queryUrl)\n    response = await axios.get(queryUrl, { auth: { username, password } })\n}catch(error){\n    console.log(error)\n}"
-            ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "http://localhost:8000/items/?character__uuid=1507eff8-0b8b-4672-8261-55b8c20d8918",
-                                ""
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "language": "typescript",
-            "source": [
-                "response.data"
-            ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "text/plain",
-                            "value": [
-                                "[",
-                                "  {",
-                                "    user: \u001b[32m'else'\u001b[39m,",
-                                "    character: \u001b[32m'1507eff8-0b8b-4672-8261-55b8c20d8918'\u001b[39m,",
-                                "    name: \u001b[32m'10 Bullets'\u001b[39m,",
-                                "    uuid: \u001b[32m'14ce97f9-67df-4861-b8c4-517b642a47cb'\u001b[39m,",
-                                "    creation_date: \u001b[32m'2022-04-11T15:40:38.217044-05:00'\u001b[39m,",
-                                "    last_updated: \u001b[32m'2022-04-11T15:40:38.217066-05:00'\u001b[39m,",
-                                "    description: \u001b[32m''\u001b[39m,",
-                                "    item_type: \u001b[32m''\u001b[39m,",
-                                "    encumbrance: \u001b[33m2\u001b[39m",
-                                "  }",
-                                "]"
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "language": "typescript",
-            "source": [
-                ""
             ],
             "outputs": []
         }
