@@ -10,7 +10,7 @@ export const MemoryCard = ({ memory }) => (
                         src={memory.memory_picture}   // not working (loading) on production server
                         alt={'Memory image'}
                         layout='responsive'
-                        width={512}
+                        width={768}
                         height={512}
                     />
                     {/* <img
