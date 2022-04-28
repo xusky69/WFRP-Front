@@ -1,4 +1,3 @@
-import axios from 'axios'
 import fetchJson, { FetchError } from "../lib/fetchJson";
 import { useState } from 'react';
 import { useRouter } from 'next/router';
@@ -18,9 +17,6 @@ export default function Login() {
             // console.log(password)
             let response
             try {
-                // const response = await axios.get('/api/login', { params: { username, password, campaign } })
-                // console.log(response)
-                // console.log(response.status)
                 await fetchJson("/api/login", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },

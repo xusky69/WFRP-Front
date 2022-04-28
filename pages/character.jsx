@@ -115,6 +115,8 @@ async function getServerSidePropsBase({ req }) {
     getAdvancedSkillData({ character: characterData, username, password, apiUrl })
   ])
 
+  console.log(characterData.character_avatar)
+
   return {
     props: {
       character: characterData,

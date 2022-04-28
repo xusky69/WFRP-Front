@@ -18,9 +18,12 @@ async function loginRoute(req: LoginRouteRequest, res: NextApiResponse) {
         res.send({ ok: true })
 
     } catch (error : any) {
+        
         if(error.response){
+            console.log(error.response)
             res.status(error.response.status).send({ detail: String(error.response.data.detail) });
         } else{
+            console.log(error)
             res.status(500).send({ detail: String(error) });
         }
     }

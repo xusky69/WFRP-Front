@@ -9,7 +9,7 @@ WORKDIR /home/WFRP_FRONT/
 
 # install node dependencies
 COPY ./package.json .
-RUN npm install
+# RUN npm install
 
 # copy the requirements file to the working directory
 # copy the project to the working directory
@@ -19,10 +19,11 @@ ADD ./ .
 RUN rm -rf .env.production
 
 # create local prod env vars
-RUN echo "NEXT_PUBLIC_API_URL='http://localhost:8000/'" > .env.production
 RUN npm run build
+RUN echo "NEXT_PUBLIC_API_URL=http://localhost:8000/" > .env.production
 
 # port exposure
 EXPOSE 3000
+
 # command to run on container start when nothing else is run:
 CMD npm run start
