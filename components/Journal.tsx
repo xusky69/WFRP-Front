@@ -26,13 +26,13 @@ const JournalEntries: FunctionComponent<JournalProps> = ({ journalEntries }) => 
                     {journalEntries.map((item, i) => (
                         <div key={"party_" + String(i)} className="mb-3 mx-0 w-12/12 card shadow-xl bg-base-100 text-neutral-content">
                             <div className="card-body p-5">
-                                <h2 className="card-title">
+                                <h2 className="card-title text-base">
                                     <GiFeather size="28" />{item.name}
                                 </h2>
-                                <div className='text-sm italic'>
+                                <div className='text-xs italic'>
                                     {processDate(item.creation_date)}
                                 </div>
-                                <p className='italic'>
+                                <p className='italic text-sm'>
                                     {item.entry_text}
                                 </p>
                             </div>
