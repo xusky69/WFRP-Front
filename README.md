@@ -85,7 +85,7 @@ The following environment variables are sentitive and should be stored in a `dja
 
 ### Frontend
 
-loaded from `WFRP_FRONT/.env.development` by the local dev server, from `WFRP_FRONT/.env.production` by the local build server and by the project environmnent variables when deploying to vercel.
+loaded from `WFRP_FRONT/.env.development` by the local dev server, from `WFRP_FRONT/.env.production` by the local build server, created during image building by the frontend Dockerfile and defined by the project environmnent variables when deploying to vercel.
 
 | Name | Description |
 | ------------- | ------------- |
@@ -181,7 +181,7 @@ An example architecture of a production environment is the following:
 
 **Useful info**
 - When deploying the API to heroku, you must use the `heroku/python` and the `heroku-subdir` (https://github.com/timanovsky/subdir-heroku-buildpack.git) buildpacks, then setup the required environment variables in the heroku ui.
-- When deploying the frontend to vercel, remember to setup the `NEXT_PUBLIC_API_URL` environment variable in the Vercel UI. Also, **you must add the Vercel project url** to the `domains` array in your `next.config.js` file, e.g:
+- When deploying the frontend to Vercel, remember to setup the `NEXT_PUBLIC_API_URL` environment variable in the Vercel UI. Also, **you must add the Vercel project url** to the `domains` array in your `next.config.js` file, e.g:
 ```
   images: {
     domains: ['localhost', 'wfrp-api.s3.amazonaws.com'],
@@ -201,7 +201,7 @@ After populating the database with the default data:
 ---
 This project arose out of the need to provide our dungeon master an easy way to manage our WFRP 4th edition campaign. 
 
-It eventually morphed into a web app that can be used by any party of adventurers who might want to simplify their adventures in the Old World. 
+It eventually morphed into a web tool that can be used by any party of adventurers who might need some help during their adventures in the grim darkness of the Old World. 
 
 ## Contributing
 ---
