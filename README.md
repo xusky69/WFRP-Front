@@ -1,229 +1,140 @@
-# WFRP-APP
----
+# mp3.ai-API
 
-![wfrp-app-preview](https://i.imgur.com/DDXg05H.jpeg)
+**[THIS PROJECT IS A WORK IN PROGRESS]**
 
-A web app for managing D&D-like tabletop campaigns based off the Warhammer Fantasy universe. 
+A **REST API** for **transcribing** and **analyzing** mp3 files with **AI**. This project is made using [Django Rest Framework](https://www.django-rest-framework.org/).
 
-This app is a work-in-progress and currently needs to be set up by a person with knowledge in web development/docker; although after set-up can be used by anyone with a smartphone and a wi-fi connection.
+### Features:
+- Transcripts a given **.mp3** audio file
+- Given a set of words, returns a word count
+- Given a set of words, returns the timestamps & confidence values for each one
+- Uses an advanced AI transformer model ([roBERTa](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment)) to idenfity Neutral, Positive & Negative sentiment levels in the audio file
+- Token authentication
+- Results stored in the database
+- Create, Read & Delete operations for your results
 
-## Description
----
-WFRP-APP is a Progressive Web App (**PWA**) **frontend** **+** fully-fledged **backend** for managing Warhammer Fantasy Roleplaying Game (**WFRP**) 4th edition campaigns.  
+As an example: given an .mp3 file about [Puppies](https://en.wikipedia.org/wiki/File:Puppy.ogg) and a set of keywords `["puppy", "puppies", "mother"]`, the output of the API is the following:
 
-- [[link]](https://github.com/xusky69/WFRP-API) **Backend repo**
-- [[link]](https://github.com/xusky69/WFRP-Front) **Frontend repo**
+```
+{'creation_date': '2022-05-12T14:21:37.332088-05:00',
+ 'get_timestamps': True,
+ 'last_updated': '2022-05-12T14:21:42.291564-05:00',
+ 'name': 'Puppies',
+ 'sentiment_negative': 0.031246395781636238,
+ 'sentiment_neutral': 0.8286275863647461,
+ 'sentiment_positive': 0.14012598991394043,
+ 'timestamps': "[{'conf': 1.0, 'end': 8.28, 'start': 7.86, 'word': 'puppy'}, "
+               "{'conf': 1.0, 'end': 11.04, 'start': 10.5, 'word': 'puppies'}, "
+               "{'conf': 0.674508, 'end': 23.28, 'start': 22.77, 'word': "
+               "'puppies'}, {'conf': 1.0, 'end': 26.1, 'start': 25.70725, "
+               "'word': 'puppies'}, {'conf': 0.856674, 'end': 28.14, 'start': "
+               "27.84, 'word': 'puppy'}, {'conf': 0.430765, 'end': 35.4, "
+               "'start': 35.07, 'word': 'puppy'}, {'conf': 1.0, 'end': 52.23, "
+               "'start': 51.81, 'word': 'puppies'}, {'conf': 0.856078, 'end': "
+               "56.07, 'start': 55.8, 'word': 'mother'}, {'conf': 0.724164, "
+               "'end': 57.48, 'start': 57.06, 'word': 'puppies'}]",
+ 'transcript': 'copy from wikipedia the free online encyclopedia at wikipedia '
+               'dot org a puppy is a juvenile dog some puppies can weigh one '
+               'to one and a half kilograms or one to three pounds while '
+               'larger ones can weigh up to seven to eleven kilograms or '
+               'fifteen to twenty three pounds all healthy puppies grow '
+               'quickly after birth of puppies coat color may change as the '
+               'puppy grows older as is commonly seen and breed such as the '
+               'yorkshire terrier he and vernacular english puppy refers '
+               'specifically two dogs while pop they often be used for other '
+               'animals such as seals giraffes guinea pigs or even rats or '
+               'sharks development born after an average of sixty three days '
+               'of gestation puppies a burgeoning am the on that has bitten '
+               'off and eaten by the mother dog puppies begin to nurse almost '
+               'immediately',
+ 'user': 'testuser',
+ 'uuid': 'de52aa55-eca2-4a19-b863-38b1ec5783bd',
+ 'word_freqs': '{"puppy": 3, "puppies": 5, "mother": 1}',
+ 'words': '["puppy", "puppies", "mother"]'}
+ ```
 
-### User features:
+### Known limitations:
+- only **.mp3 files are supported**
+- Your audio file will be cropped to the first minute
 
-- Visualize your character sheet, party details, bestiary, etc
-- Dungeon master panel for managing every single detail of your campaign
-- Register important moments of your campaign using the *campaign journal*, or upload them as pictures using the *memories* system
-- Can be installed in your phone to be used like a native app 
-
-### Techinal features:
-
-- **Blazing-fast** frontend built on top of Next.js + TailwindCSS
-- Native-like **PWA** experience made possible by the excellent Next.js PWA template, with offline content support
-- **Beautiful** user interface thanks to the amazing [daisyUI](https://daisyui.com/) component library
-- Fully-featured Django **REST API** for performing CRUD operations on several relational data models described by the WFRP 4eth edition rulebook such as **Campaigns, Characters, Spells, Items, Enemies, etc**; with support for querystring filtering
-- Integration with **AWS S3** (via django-storages) for storing & serving **user media** such as character avatars and bestiary illustrations
-- Total control over your campaign via the **dungeon-master panel** thanks to the Django admin panel
-- Secure **stateless authentication** handled via [iron-session](https://github.com/vvo/iron-session)
-- Full **docker** & compose support so you can host your own campaigns locally
-
-## To be done
----
-by order of priority:
-- Dungeon-master panel on the frontend side
-- User Registration on the frontend side
-- Campaign creation on the frontend side
-- User panel for managing campaigns and players
-- Dice rolling tool
-- Skill-check tool
-- Desktop UI layout support
-
-After all the above is done, the idea is to release the app on a powerful-enough production environment, ideally financed by a patreon/crowdsourcing strategy, so that all users can access the app for free directly from one single url.
-
-## F.A.Q.
----
-**Q:** Do you plan on doing this for D&D? 
-**A:** Would be cool but would need some help! I'm currently learning the D&D 5th edition systems
-
-**Q:** Why no typescript? 
-**A:** Had some issues with iron-session ts support during early stages of this project, so I stuck with js for the meantime
-
-
-## Environment variables
----
-
-### Backend
-
-| Name | Description |
-| ------------- | ------------- |
-| TIME_ZONE | server timezone |
-| DEBUG | django debug flag |
-| DOCKER | flag used in `settings.py` to enable the docker postgres db |
-| HEROKU | flag used in `settings.py` to enable the heroku postgres db |
-| CLOUD_MEDIA | flag used in `settings.py` to enable the AWS S3 media storage |
-| DB_NAME | postgres DB name. Used by docker & heroku |
-| DB_USER | postgres username. Used by docker & heroku |
-| DB_PSWD | postgres password. Used by docker & heroku |
-| DB_HOST | postgres DB host. Used by docker & heroku |
-| DB_PORT | postgres DB port. Used by heroku |
-| HEROKU_URL | used in `settings.py` to add the heroku url to ALLOWED_HOSTS |
-| PROJECT_PATH | used by the heroku subdir buildpack to point the location of the django project |
-
-The following environment variables are sentitive and should be stored in a `django_project/local_env_vars` file for development or directly in your cloud provider settings when deploying the project.
-
-| Name | Description |
-| ------------- | ------------- |
-| DJANGO_SECRET_KEY | Django secret key, you can use https://miniwebtool.com/django-secret-key-generator/ to generate one  |
-| AWS_ACCESS_KEY_ID | AWS S3 credential, used by django-storages if `CLOUD_MEDIA=='TRUE'`  |
-| AWS_S3_REGION_NAME | AWS S3 bucket region, used by django-storages if `CLOUD_MEDIA=='TRUE'` |
-| AWS_SECRET_ACCESS_KEY | AWS S3 credential, used by django-storages if `CLOUD_MEDIA=='TRUE'` |
-| AWS_STORAGE_BUCKET_NAME | AWS S3 bucket name, used by django-storages if `CLOUD_MEDIA=='TRUE'` |
-
-### Frontend
-
-loaded from `WFRP_FRONT/.env.development` by the local dev server, from `WFRP_FRONT/.env.production` by the local build server, created during image building by the frontend Dockerfile and defined by the project environmnent variables when deploying to vercel.
-
-| Name | Description |
-| ------------- | ------------- |
-| NEXT_PUBLIC_API_URL | REST API url |
+### To be done:
+- Support longer audio files
+- Support a more sofisticated auth strategy (JWT, iron-session, etc)
+- Create dedicated microservices for model inference only
+- Move the inference pipeline to the `save` method of the `Recording` model, *in order to keep views thin and models fat*
 
 ## Setting up dev environment
----
-### Setting up the backend
 
-1. Clone the backend repo & cd to root of the project
-2. Make sure you have installed a modern python 3 (>3.7) in your current environment
-3. Create `venv` or use virtual environment manager of your preference (conda, pyenv, etc...), then install dependencies. eg:
+1. Clone the repo & cd to `REPO_FOLDER/django_project/`
+2. Make sure you have installed a modern python 3 (>3.9) in your current environment
+3. Create a `venv` or use virtual environment manager of your preference (conda, pyenv, etc...), then install dependencies. eg:
 ```
 python3 -m venv venv
 source venv/bin/activate
-cd django_project/
 pip3 install -r requirements.txt
 ```
-4. Create a symlink between dev_env_vars and .env file (or just copy and rename):
+4. Create a symlink between `dev_env_vars` and a `.env` file (or just copy `dev_env_vars` and rename it to `.env`):
 ```
 ln dev_env_vars .env
 ```
-5. create initial migrations
+5. open `MP3AI/settings.py` and at the bottom of the file make sure that both `ENABLE_SENT` and `ENABLE_VOSK` are set to `False`:
 ```
-python manage.py makemigrations users
-python manage.py makemigrations wfrp
+# ENABLE HUGGINGFACE ROBERTA SENTIMENT MODEL
+ENABLE_SENT = False
+
+# ENABLE VOSK S2T MODEL
+ENABLE_VOSK = False
+```
+**NOTE**: this disables ML models in order to speed up migrations
+
+6. create & run the initial migrations
+```
+python manage.py makemigrations accounts
+python manage.py makemigrations mp3
 python manage.py migrate
 ```
-6. open dev_env_vars file and set:
+7. open `MP3AI/settings.py` and at the bottom of the file make sure that both `ENABLE_SENT` and `ENABLE_VOSK` are set to `True`:
 ```
-CLOUD_MEDIA=FALSE
-``` 
-and then populate db with default data
+# ENABLE HUGGINGFACE ROBERTA SENTIMENT MODEL
+ENABLE_SENT = True
+
+# ENABLE VOSK S2T MODEL
+ENABLE_VOSK = True
 ```
-python manage.py runscript wfrp.scripts.populate_db
-```
-7. create a file named `local_env_vars` and setup the `DJANGO_SECRET_KEY` environment variable, you can use https://miniwebtool.com/django-secret-key-generator/ to generate one.
-e.g:
-```
-### django_project/local_env_vars
-DJANGO_SECRET_KEY='mn8db#9tx6&y*!6=*+v_%+$ga#6zdz7t_dfd^ui(d$bgd1)5cf'
-```
-8. run development server
+8. run the development server
 ```
 python manage.py runserver
 ```
-The backend will be served at localhost:8000
+The API will be served at `localhost:8000/api/v1/recordings/`
 
-**Warning:** database data is stored at volume `django_project/db.sqlite3` & user media at volume `django_project/media`. If you delete any of these, you will lose your campaign data.
 
-### Setting up the frontend
-
-1. cd to the `WFRP-Front` located in the root of the backend repo and clone the frontend repo in the root of such folder 
-```
-git clone https://github.com/xusky69/WFRP-Front .
-```
-2. run `npm install` to install the required dependencies
-3. run `npm run dev` to run the development server
-
-The frontend will be served at localhost:3000
-
-Remember that anyone connected to your wifi network should be able to connect to the frontend at `<your_pc_local_ip>:3000`, so you can host your campaign locally.
+**PLEASE READ**: 
+- the first time you spawn the dev server, it will take a long time to boot, as it will be downloading the sentiment transformer model
+- subsequent dev server executions will also be longer than the usual, as it will take some time to initialize the sentiment transformer model
 
 ## Setting up docker environment
----
-The docker environment is ideal for testing production-like environments; and also for hosting campaigns on your local wi-fi network using a pc connected to such network as a server and with minimal setup. **Currently, the Docker environment only works in linux-based operating systems**.
-
-1. Clone the backend repo & cd to root of the project
-2. cd to the `WFRP-Front` located in the root of the backend repo and clone the frontend repo in the root of such folder 
-```
-git clone https://github.com/xusky69/WFRP-Front .
-```
-3. build docker images and compose-up:
+1. cd to the repo root & run
 ```
 docker-compose up --build
 ```
-4. run the initial migrations
+2. open another terminal and run migrations
 ```
-docker-compose exec django python manage.py makemigrations users
-docker-compose exec django python manage.py makemigrations wfrp
+docker-compose exec django python manage.py makemigrations accounts
+docker-compose exec django python manage.py makemigrations mp3
 docker-compose exec django python manage.py migrate
 ```
-5. populate the db with default data 
+**NOTE**: migrations will be very slow to execute, due to ML models instanciating each time you run one of the above commands
+
+3. take containers down and up again just to make sure the db initializes properly
 ```
-docker-compose exec django python manage.py runscript wfrp.scripts.populate_db
+docker-compose down
+docker-compose up
 ```
+The API will be served at `localhost:8000/api/v1/recordings/`
 
-Now you can just run the project via `docker-compose up` and turn it off via `docker-compose down`. 
+## Testing the API
 
-The backend will be served at `localhost:8000` and the frontend at `localhost:3000`
-
-Remember that anyone connected to your wifi network should be able to connect to the frontend at `<your_pc_local_ip>:3000`, so you can host your campaign locally.
-
-**Warning:** database data is stored at volume `./postgres_data` & user media at volume `docker_media_root`. If you delete any of these folders, you will lose your campaign data.
-
-## Deploying the project
----
-This project can be deployed using the free tiers of Vercel, Heroku + Heroku Postgres and AWS S3. 
-
-Environment variables are prepared in both the frontend and backend in order to transition seamlessly from the development environment to a production one that uses the aforementioned services (read the environment variables section)
-
-An example architecture of a production environment is the following:
-
-![wfrp-app-arch](https://i.imgur.com/JAFwPXD.png)
-
-**Useful info**
-- When deploying the API to heroku, you must use the `heroku/python` and the `heroku-subdir` (https://github.com/timanovsky/subdir-heroku-buildpack.git) buildpacks, then setup the required environment variables in the heroku ui.
-- When deploying the frontend to Vercel, remember to setup the `NEXT_PUBLIC_API_URL` environment variable in the Vercel UI. Also, **you must add the Vercel project url** to the `domains` array in your `next.config.js` file, e.g:
+You will find an example test script at `REPO_ROOT/test_api.py`
 ```
-  images: {
-    domains: ['localhost', 'wfrp-api.s3.amazonaws.com'],
-  },
+python test_api.py
 ```
-- In order to populate the heroku db with the default data, you must connect to the API dyno via `heroku run bash --app YOUR_APP_NAME` and manually run the django script
-
-## How to use
----
-After populating the database with the default data:
-1. head to `localhost:8000/admin` and login with username `admin` & password `123`. In the users section you can change your password and manage the user accounts of the default characters. **This will be your dungeon master panel**. 
-2. Head to `localhost:8000/` and click campaigns, write down the uuid of your campaign.
-3. users can login via the app frontend, served at `localhost:3000`. They must input their user data (defined by you in the dungeon master panel) and the campaign uuid.
-4. Enjoy!
-
-## About this project
----
-This project arose out of the need to provide our dungeon master an easy way to manage our WFRP 4th edition campaign. 
-
-It eventually morphed into a web tool that can be used by any party of adventurers who might need some help during their adventures in the grim darkness of the Old World. 
-
-## Contributing
----
-Please use the corresponding frontend/backend repos to PR any changes/features you wish to contribute. Any help is highly appreciated!
-
-This project is licensed under the copyleft GPLv3 license and I'm personally against releasing it comercially. If you do release a commercial, lucrative implementation of this project, I will ask you to publish the entire source code.
-
-## Disclaimer
----
-This open-source project **does not intend to replace** the official Warhammer Fantasy RPG 4th edition material published by Cubicle 7 and licensed by Games Workshop. Instead, it acts as a **supplement** to the above, with the intent to **facilitate WFRPG campaigns**, specially to novice players & dungeon masters.
-
-The assets used by the default content database population scripts were extracted from the WFRPG 4th edition digital starter pack.
